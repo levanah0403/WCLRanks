@@ -1,5 +1,5 @@
 ## Title: WCLRanks
-## Version: 1.0.20211109
+## Version: 1.0.20211111
 ## Author: acelan@acelan.idv.tw
 ## DefaultState: enabled
 
