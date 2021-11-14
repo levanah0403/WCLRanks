@@ -1,6 +1,7 @@
+## Interface: 20502
 ## Interface-BCC: 20502
 ## Title: WCLRanks
-## Version: 1.0.20211113
+## Version: 1.0.20211114
 ## Author: acelan@acelan.idv.tw
 ## DefaultState: enabled
 
