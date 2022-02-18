@@ -294,7 +294,7 @@ WP_Database = {
 ["都沒特異功能"] = "ET: 766.045/81.12%B46D53(Enhancement)|NH: 1188.69/88.70%B32D34(Enhancement)|",
 ["Seviaa"] = "ST: 1079.91/99.40%B1D1(Enhancement)|SH: 1453.63/99.36%B4D4(Enhancement)|",
 ["劈哩啪"] = "RT: 74.9297/51.67%B80D95(Gladiator)|NH: 888.093/89.88%B39D45(Protection)|",
-["故障圖騰"] = "ET: 668.49/76.76%B120D139(Elemental)|LH: 1251.85/95.48%B23D24(Elemental)|",
+["故障圖騰"] = "UG: 100.294/25.60%B5D5(Elemental)|",
 ["俊哥"] = "ST: 842.143/99.83%B1D1(Warden)|",
 ["Salce"] = "NT: 856.634/90.36%B25D29(Combat)|LH: 1367.48/97.90%B9D9(Combat)|",
 ["Heaven"] = "CT: 96.6695/10.90%B332D476(Holy)|LH: 1390.79/98.32%B6D6(Holy)|",
@@ -564,7 +564,7 @@ WP_Database = {
 ["新興區加摩爾"] = "CG: 47.948/23.60%B158D209(Feral)|",
 ["夕狘"] = "RK: 455.463/50.44%B213D274(Combat)|NG: 270.424/85.97%B105D120(Combat)|NT: 930.633/92.40%B54D63(Combat)|",
 ["小霖"] = "NG: 233.868/91.80%B25D27(Destruction)|LT: 960.643/96.41%B27D28(Destruction)|NH: 1238.3/94.35%B48D49(Destruction)|",
-["海上的月亮"] = "RT: 718.524/72.48%B36D40(Survival)|NH: 1125/88.99%B104D120(BeastMastery)|",
+["海上的月亮"] = "RT: 464.035/73.17%B1D1(Survival)|",
 ["Undertaker"] = "NT: 783.808/87.18%B26D29(Fury)|EH: 912.073/80.81%B73D86(Fury)|",
 ["屎臉馬伕"] = "LT: 1003.3/96.70%B23D24(Arcane)|NH: 1219.52/93.66%B49D52(Arcane)|",
 ["破壞貓"] = "ET: 717.409/75.60%B77D85(Shadow)|UH: 401.126/43.85%B111D133(Discipline)|",
@@ -4233,5 +4233,6 @@ WP_Database = {
 ["一曾經滄海一"] = "CH: 91.6716/24.98%B279D356(Holy)|",
 ["七瀨戀"] = "CT: 99.5111/8.77%B361D465(Elemental)|CH: 196.059/10.62%B452D559(Elemental)|",
 ["書繁"] = "CG: 7.80215/1.33%B149D185(Protection)|CT: 1.11994/0.17%B298D388(Protection)|RH: 216.451/68.41%B158D180(Gladiator)|",
+["橘子菈"] = "RT: 438.976/72.53%B1D1(Holy)|",
 }
 end
