@@ -12,6 +12,9 @@ local function expand(name)
         ["K"] = function()
             return "Karazhan"
         end,
+        ["Z"] = function()
+            return "Zul'Aman"
+        end,
         ["G"] = function()
             return "Gruul/Magtheridon"
         end,
