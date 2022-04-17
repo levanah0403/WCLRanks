@@ -168,7 +168,7 @@ function WCLRanks:InitCode()
 	GameTooltip:HookScript("OnTooltipSetUnit", function(self)
 		local _, unit = self:GetUnit()
 		local dstr = ""
-		if UnitExists(unit) and UnitIsPlayer(unit) then
+		if UnitExists(unit) and UnitIsPlayer(unit) and not (InCombatLockdown() or UnitAffectingCombat("player")) then
 			WP_MouseoverName = UnitName(unit)
 			dstr_array = load_data(WP_MouseoverName)
 			if dstr_array then
