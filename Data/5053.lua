@@ -2852,7 +2852,7 @@ WP_Database = {
 ["小雞麵"] = "RG: 136.243/57.60%B43D157(Frost)|CT: 60.5015/16.47%B105D283(Frost)|CH: 108.743/16.14%B36D136(Frost)|",
 ["好像吃太飽"] = "UH: 110.519/49.40%B85D289(Justicar)|",
 ["降星"] = "CG: 43.6207/10.18%B10D46(Fury)|",
-["阿斯特捷利康"] = "RG: 171.559/74.99%B34D120(BeastMastery)|EH: 559.222/78.50%B172D710(BeastMastery)|",
+["阿斯特捷利康"] = "UG: 124.56/45.38%B1D1(Marksmanship)|",
 ["羅嚴塔爾"] = "CG: 64.2342/17.56%B105D550(Arcane)|UT: 223.325/32.12%B194D808(Arcane)|CH: 189.503/10.00%B258D1114(Arcane)|",
 ["Silxar"] = "CG: 56.5083/18.08%B3D6(Demonology)|",
 ["挨打要立正"] = "RG: 139.124/57.29%B7D50(Arms)|RT: 456.231/66.67%B14D69(Arms)|RH: 540.472/57.58%B32D194(Arms)|",
@@ -3187,7 +3187,7 @@ WP_Database = {
 ["小騷蹄子"] = "CH: 132.938/7.34%B210D910(Restoration)|UP: 149.79/30.82%B82D514(Restoration)|",
 ["Tikarina"] = "EG: 180.528/76.10%B37D241(BeastMastery)|NT: 825.43/92.20%B17D153(BeastMastery)|RH: 840.401/66.80%B124D670(BeastMastery)|",
 ["莎莎四號"] = "RT: 379.207/60.04%B95D468(BeastMastery)|UH: 701.734/49.21%B33D192(Survival)|",
-["PHASE"] = "P5",
+["PHASE"] = "Pre-Patch",
 ["黛奧辛小河豚"] = "EH: 712.493/82.93%B66D273(Restoration)|UP: 205.768/43.33%B34D216(Restoration)|",
 ["One"] = "UK: 65.7862/36.86%B9D24(Warden)|CT: 193.864/23.75%B37D163(Balance)|",
 ["風一阿肥一城"] = "RZ: 247.283/67.87%B5D14(Holy)|NH: 758.586/88.38%B47D220(Holy)|",
@@ -4596,5 +4596,6 @@ WP_Database = {
 ["冷血貓"] = "CG: 48.8129/17.70%B56D227(Combat)|CH: 123.855/19.02%B174D725(Combat)|UP: 158.131/32.54%B43D242(Combat)|",
 ["偶數類倫"] = "CH: 53.931/4.55%B349D1295(BeastMastery)|",
 ["丹妮絲"] = "RH: 298.835/52.68%B139D613(Combat)|",
+["昀妃"] = "UG: 111.601/38.99%B1D1(Arms)|",
 }
 end
