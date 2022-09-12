@@ -2,7 +2,7 @@
 ## Interface-BCC: 20504
 ## Interface-Wrath: 30400
 ## Title: WCLRanks
-## Version: 1.5.20220911
+## Version: 1.5.20220912
 ## Author: acelan@acelan.idv.tw
 ## DefaultState: enabled
 
