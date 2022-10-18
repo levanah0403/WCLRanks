@@ -10,10 +10,10 @@ local function expand(name)
 
     local switch = {
         ["K"] = function()
-            return "Karazhan"
+            return "Naxx/Sarth/Maly(10)"
         end,
         ["Z"] = function()
-            return "Zul'Aman"
+            return "Naxx/Sarth/Maly(25)"
         end,
         ["G"] = function()
             return "Gruul/Magtheridon"
