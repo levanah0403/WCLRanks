@@ -1,7 +1,7 @@
 ## Interface: 30400
 ## Interface-Wrath: 30400
 ## Title: WCLRanks
-## Version: 2.0.20221022
+## Version: 2.0.20221023
 ## Author: acelan@acelan.idv.tw
 ## DefaultState: enabled
 
