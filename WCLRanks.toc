@@ -4,9 +4,13 @@
 ## Version: 3.0.20230113
 ## Author: acelan@acelan.idv.tw
 ## DefaultState: enabled
+## SavedVariables: WCLRanksDB
 
 Libs\LibStub\LibStub.lua
 Libs\AceTimer-3.0\AceTimer-3.0.xml
 Libs\AceAddon-3.0\AceAddon-3.0.xml
 Data\WCLRanks.xml
+Locale\enUS.lua
+Locale\zhTW.lua
 WCLRanks.lua
+WCLRanks_BaseData.lua

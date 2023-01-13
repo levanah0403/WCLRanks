@@ -1,402 +1,686 @@
-local WP_TargetName
-local WP_MouseoverName
+local _, L = ...;
 
-local WP_ShowPrintOnClick = true
-local _G = getfenv(0)
-local WCLRanks = _G.LibStub("AceAddon-3.0"):NewAddon("WCLRanks", "AceTimer-3.0")
+WCLRanks = CreateFrame("Frame", "WCLRanks", UIParent);
 
+local function dump(o)
+   if type(o) == 'table' then
+      local s = '{ '
+      for k,v in pairs(o) do
+         if type(k) ~= 'number' then k = '"'..k..'"' end
+                if type(v) == 'table' then
+                        s = s .. '['..k..'] = ' .. dump(v) .. ','
+                else
+                        s = s .. '['..k..'] = ' .. tostring(v) .. ','
+                end
 
-local function expand(name)
-
-    local switch = {
-        ["K"] = function()
-            return "Naxx/Sarth/Maly(10)"
-        end,
-        ["Z"] = function()
-            return "Naxx/Sarth/Maly(25)"
-        end,
-        ["G"] = function()
-            return "Gruul/Magtheridon"
-        end,
-        ["T"] = function()
-            return "SSC/TK"
-        end,
-        ["H"] = function()
-            return "BT/Hyjal"
-        end,
-        ["P"] = function()
-            return "SunwellPlateau"
-        end,
-        ["B"] = function()
-            return " Server Rank No."
-        end,
-        ["D"] = function()
-            return " Region Rank NO."
-        end,
-        ["A"] = function()
-            return "|cFFE5CC80"
-        end,
-        ["S"] = function()
-            return "|cFFE26880"
-        end,
-        ["L"] = function()
-            return "|cFFFF8000"
-        end,
-        ["N"] = function()
-            return "|cFFBE8200"
-        end,
-        ["E"] = function()
-            return "|cFFA335EE"
-        end,
-        ["R"] = function()
-            return "|cFF0070FF"
-        end,
-        ["U"] = function()
-            return "|cFF1EFF00"
-        end,
-        ["C"] = function()
-            return "|cFF666666"
-        end
-    }
-
-    local out = {}
-    local idx = 1
-    local str = ""
-    local max = strlen(name)
-    local inner_loop = 0
-    for j=1,max do
-            ts = strsub(name,j,j)
-
-	    if ts == "(" then
-		    inner_loop = 1
-	    end
-
-	    if inner_loop == 1 then
-		    str = str .. ts
-	    elseif ts == "|" then
-		    out[idx] = str
-		    idx = idx + 1
-		    str = ""
-	    else
-            	local f = switch[ts]
-            	if f then
-                	str = str .. f()
-            	else
-                	str = str .. ts
-            	end
-	    end
-
-	    if ts == ")" then
-		    inner_loop = 0
-	    end
-    end
-    return out
+      end
+      return s .. '} '
+   else
+      return tostring(o)
+   end
 end
 
-local function cut_str(str)
-	if str ~= nil then
-		local s1,s2,s3 = strsplit("%",str);
-		if s1 ~= nil then
-			s1 = s1 .. "%"
-			if s2 ~= nil then
-				s1 = s1 .. s2 .. "%"
-			end
-			return s1
-		end
-	end
-	return nil
+function WCLRanks:Init()
+  self.debug = false;
+  self.defaults = {
+    chatExtension = true,
+    tooltipExtension = true,
+    slashExtension = true,
+    showDuringCombat = false,
+    show = {},
+  };
+  self.activityDetails = {
+    -- Naxxramas 10-man
+    [841] = {
+      zone = 1015,
+      size = 10,
+      encounters = { 101107, 101108, 101109, 101110, 101111, 101112, 101113, 101114, 101115, 101116, 101117, 101118, 101119, 101120, 101121 }
+    },
+    -- The Obsidian Sanctum 10-man
+    [1101] = {
+      zone = 1015,
+      size = 10,
+      encounters = { 742 }
+    },
+    -- The Eye of Eternity 10-man
+    [1102] = {
+      zone = 1015,
+      size = 10,
+      encounters = { 734 }
+    },
+    -- Vault of Archavon 10-man
+    [1095] = {
+      zone = 1016,
+      size = 10,
+      encounters = { 772 }
+    },
+    -- Naxxramas 25-man
+    [1098] = {
+      zone = 1015,
+      size = 25,
+      encounters = { 101107, 101108, 101109, 101110, 101111, 101112, 101113, 101114, 101115, 101116, 101117, 101118, 101119, 101120, 101121 }
+    },
+    -- The Obsidian Sanctum 25-man
+    [1097] = {
+      zone = 1015,
+      size = 25,
+      encounters = { 742 }
+    },
+    -- The Eye of Eternity 25-man
+    [1094] = {
+      zone = 1015,
+      size = 25,
+      encounters = { 734 }
+    },
+    -- Vault of Archavon 25-man
+    [1096] = {
+      zone = 1016,
+      size = 25,
+      encounters = { 772 }
+    },
+  };
+  self.db = CopyTable(self.defaults);
+  self.db.show["1015_10"] = true;
+  self.db.show["1015_25"] = true;
+  self.db.show["1016_10"] = true;
+  self.db.show["1016_25"] = true;
+  self:LogDebug("Init");
+  self:SetScript("OnEvent", self.OnEvent);
+  self:RegisterEvent("ADDON_LOADED");
+  self:RegisterEvent("CHAT_MSG_SYSTEM");
+  self:RegisterEvent("MODIFIER_STATE_CHANGED");
+  self:RegisterEvent("PLAYER_ENTERING_WORLD");
+  --self:RegisterEvent("UPDATE_MOUSEOVER_UNIT");
+  GameTooltip:HookScript("OnTooltipSetUnit", function(tooltip, ...)
+    WCLRanks:OnTooltipSetUnit(tooltip, ...);
+  end);
+  GameTooltip:HookScript("OnShow", function(tooltip, ...)
+    WCLRanks:OnTooltipShow(tooltip, ...);
+  end);
 end
 
-
-local function load_data(tname)
-	if type(WP_Database) ~= "table" then
-		return nil
-	end
-	if WP_Database[tname] then
-		return expand(WP_Database[tname])
-	end
-	return nil
-end
-
-hooksecurefunc("ChatFrame_OnHyperlinkShow", function(chatFrame, link, text, button)
-if (IsModifiedClick("CHATLINK")) then
-  if (link and button) then
-    local args = {};
-    for v in string.gmatch(link, "[^:]+") do
-      table.insert(args, v);
-    end
-		if (args[1] and args[1] == "player") then
-			args[2] = Ambiguate(args[2], "short")
-			WP_TargetName = args[2]
-			if WP_ShowPrintOnClick == true then
-				dstr_array = load_data(WP_TargetName)
-				if dstr_array then
-					for i, dstr in ipairs(dstr_array) do
-						DEFAULT_CHAT_FRAME:AddMessage('WCL ' .. WP_TargetName .. ': ' .. dstr, 255, 209, 0)
-					end
-				end
-			end
-		end
-	end
-end
-end)
-
-local function printInfo(self)
-	print("|cFFFFFF00WCL-" .. self.value)
-end
-
-hooksecurefunc("UnitPopup_ShowMenu", function(dropdownMenu, which, unit, name, userData)
-
-	WP_TargetName = dropdownMenu.name
-
-	if (UIDROPDOWNMENU_MENU_LEVEL > 1) then
-	return
-	end
-
-	local dstr_array = load_data(WP_TargetName)
-
-	if dstr and UnitExists(unit) and UnitIsPlayer(unit) then
-		local info = UIDropDownMenu_CreateInfo()
-		info.text = 'WCL: ' .. dstr_array[1]
-		info.owner = which
-		info.notCheckable = 1
-		info.func = printInfo
-		info.value = WP_TargetName .. ": " .. dstr
-		UIDropDownMenu_AddButton(info)
-	end
-
-end)
-
-function WCLRanks:InitCode()
-	GameTooltip:HookScript("OnTooltipSetUnit", function(self)
-		local _, unit = self:GetUnit()
-		local dstr = ""
-		if UnitExists(unit) and UnitIsPlayer(unit) and not (InCombatLockdown() or UnitAffectingCombat("player")) then
-			WP_MouseoverName = UnitName(unit)
-			dstr_array = load_data(WP_MouseoverName)
-			if dstr_array then
-				for i, dstr in ipairs(dstr_array) do
-					GameTooltip:AddLine(dstr, 255, 209, 0)
-				end
-			end
-			GameTooltip:Show()
-		end
+function WCLRanks:InitOptions()
+  self.optionsPanel = CreateFrame("Frame");
+  self.optionsPanel.name = "WCLRanks";
+  InterfaceOptions_AddCategory(self.optionsPanel);
+  pos_y = -20
+  -- Chat integration
+  self.optionCheckChat = CreateFrame("CheckButton", nil, self.optionsPanel, "InterfaceOptionsCheckButtonTemplate");
+	self.optionCheckChat:SetPoint("TOPLEFT", 20, pos_y);
+	self.optionCheckChat.Text:SetText(L["OPTION_CHAT"]);
+	self.optionCheckChat:SetScript("OnClick", function()
+		self.db.chatExtension = self.optionCheckChat:GetChecked();
 	end)
+	self.optionCheckChat:SetChecked(self.db.chatExtension);
+	pos_y = pos_y - 20
+  -- Player tooltip integration
+  self.optionCheckTooltip = CreateFrame("CheckButton", nil, self.optionsPanel, "InterfaceOptionsCheckButtonTemplate");
+	self.optionCheckTooltip:SetPoint("TOPLEFT", 20, pos_y);
+	self.optionCheckTooltip.Text:SetText(L["OPTION_TOOLTIP"]);
+	self.optionCheckTooltip:SetScript("OnClick", function()
+		self.db.tooltipExtension = self.optionCheckTooltip:GetChecked();
+	end)
+	self.optionCheckTooltip:SetChecked(self.db.tooltipExtension);
+	pos_y = pos_y - 20
+  -- Slash command
+  self.optionCheckSlash = CreateFrame("CheckButton", nil, self.optionsPanel, "InterfaceOptionsCheckButtonTemplate");
+	self.optionCheckSlash:SetPoint("TOPLEFT", 20, pos_y);
+	self.optionCheckSlash.Text:SetText(L["OPTION_SLASH_CMD"]);
+	self.optionCheckSlash:SetScript("OnClick", function(_, value)
+		self.db.slashExtension = self.optionCheckSlash:GetChecked();
+	end)
+	self.optionCheckSlash:SetChecked(self.db.slashExtension);
+	pos_y = pos_y - 20
+  -- Show tooltip logs During combat
+  self.optionCheckSlash = CreateFrame("CheckButton", nil, self.optionsPanel, "InterfaceOptionsCheckButtonTemplate");
+	self.optionCheckSlash:SetPoint("TOPLEFT", 20, pos_y);
+	self.optionCheckSlash.Text:SetText(L["OPTION_DURING_COMBAT"]);
+	self.optionCheckSlash:SetScript("OnClick", function(_, value)
+		self.db.showDuringCombat = self.optionCheckSlash:GetChecked();
+	end)
+	self.optionCheckSlash:SetChecked(self.db.showDuringCombat);
+	pos_y = pos_y - 20
+  -- Show NAXX/Sarth/Maly 10 player logs
+  self.optionShow_1015_10 = CreateFrame("CheckButton", nil, self.optionsPanel, "InterfaceOptionsCheckButtonTemplate");
+	self.optionShow_1015_10:SetPoint("TOPLEFT", 20, pos_y);
+	self.optionShow_1015_10.Text:SetText(L["OPTION_SHOW_1015_10"]);
+	self.optionShow_1015_10:SetScript("OnClick", function(_, value)
+		self.db.show["1015_10"] = self.optionShow_1015_10:GetChecked();
+	end)
+	self.optionShow_1015_10:SetChecked(self.db.show["1015_10"]);
+	pos_y = pos_y - 20
+  -- Show NAXX/Sarth/Maly 25 player logs
+  self.optionShow_1015_25 = CreateFrame("CheckButton", nil, self.optionsPanel, "InterfaceOptionsCheckButtonTemplate");
+	self.optionShow_1015_25:SetPoint("TOPLEFT", 20, pos_y);
+	self.optionShow_1015_25.Text:SetText(L["OPTION_SHOW_1015_25"]);
+	self.optionShow_1015_25:SetScript("OnClick", function(_, value)
+		self.db.show["1015_25"] = self.optionShow_1015_25:GetChecked();
+	end)
+	self.optionShow_1015_25:SetChecked(self.db.show["1015_25"]);
+	pos_y = pos_y - 20
+  -- Show Vault of Archavon 10 player logs
+  self.optionShow_1016_10 = CreateFrame("CheckButton", nil, self.optionsPanel, "InterfaceOptionsCheckButtonTemplate");
+	self.optionShow_1016_10:SetPoint("TOPLEFT", 20, pos_y);
+	self.optionShow_1016_10.Text:SetText(L["OPTION_SHOW_1016_10"]);
+	self.optionShow_1016_10:SetScript("OnClick", function(_, value)
+		self.db.show["1016_10"] = self.optionShow_1016_10:GetChecked();
+	end)
+	self.optionShow_1016_10:SetChecked(self.db.show["1016_10"]);
+	pos_y = pos_y - 20
+  -- Show Vault of Archavon 25 player logs
+  self.optionShow_1016_25 = CreateFrame("CheckButton", nil, self.optionsPanel, "InterfaceOptionsCheckButtonTemplate");
+	self.optionShow_1016_25:SetPoint("TOPLEFT", 20, pos_y);
+	self.optionShow_1016_25.Text:SetText(L["OPTION_SHOW_1016_25"]);
+	self.optionShow_1016_25:SetScript("OnClick", function(_, value)
+		self.db.show["1016_25"] = self.optionShow_1016_25:GetChecked();
+	end)
+	self.optionShow_1016_25:SetChecked(self.db.show["1016_25"]);
+	pos_y = pos_y - 20
 end
 
+function WCLRanks:LogOutput(...)
+  print("|cffff0000LT|r", ...);
+end
 
-local Addon_EventFrame = CreateFrame("Frame")
-Addon_EventFrame:RegisterEvent("ADDON_LOADED")
-Addon_EventFrame:SetScript("OnEvent",
-	function(self, event, addon)
-		if addon == "WCLRanks" then
-			WP_Database = WP_Database or {}
-			WP_Database_1 = WP_Database_1 or {}
-			WP_Database_2 = WP_Database_2 or {}
-			WP_Database_3 = WP_Database_3 or {}
-			WCLRanks:ScheduleTimer("InitCode", 5)
-		end
-end)
+function WCLRanks:LogDebug(...)
+  if self.debug then
+    print("|cffff0000LT|r", "|cffffff00Debug|r", ...);
+  end
+end
 
+function WCLRanks:AddPlayerInfoToTooltip(targetName)
+  local playerData, playerName, playerRealm = self:GetPlayerData(targetName);
+  self:LogDebug("playerData = " .. dump(playerData))
+  if playerData then
+    self:LogDebug("WCLRanks:AddPlayerInfoToTooltip!!")
+    self:SetPlayerInfoTooltip(playerData, playerName, playerRealm);
+  end
+end
 
-local Chat_EventFrame = CreateFrame("Frame")
-Chat_EventFrame:RegisterEvent("CHAT_MSG_SYSTEM")
-Chat_EventFrame:SetScript("OnEvent",
-	function(self, event, message)
-	local name
+function WCLRanks:OnSlashCommand(cmd)
+  if not self.db.slashExtension then
+    return;
+  end
+  if not cmd or cmd == ""  or cmd == "help" or cmd == "?" then
+    print("|cFFE5CC7F[WCLRanks]|r " .. "Shows player's WCL scores")
+    print("|cFFE5CC7F[WCLRanks]|r " .. "|cFFFFFF00/WCLRanks or /wr CHAR_NAME|r to query CHAR_NAME's score")
+    print("|cFFE5CC7F[WCLRanks]|r " .. "|cFFFFFF00/WCLRanks or /wr help|?|r to show this help")
+    return;
+  end
+  --self:LogOutput("OnSlashCommand", arguments);
+  local playerData, playerName, playerRealm = self:GetPlayerData(cmd);
+  if playerData then
+    self:SendSystemChatLine(L["CHAT_PLAYER_DETAILS"].." |Hplayer:"..playerName.."-"..playerRealm.."|h"..playerName.."|h");
+    self:SendPlayerInfoToChat(playerData, playerName, playerRealm, true);
+  else
+    self:SendSystemChatLine(L["CHAT_PLAYER_NOT_FOUND"].. ": " .. cmd.."|h");
+  end
+end
 
-	name = Deformat(message, _G.WHO_LIST_FORMAT)
-	if name then
-		dstr_array = load_data(name)
-		if dstr_array then
-			for i, dstr in ipairs(dstr_array) do
-				print("|cFFFFFF00WCL " .. name .. ":" .. dstr )
-			end
-		end
-	end
-end)
-
-
--- a dictionary of format to match entity
-local FORMAT_SEQUENCES = {
-    ["s"] = ".+",
-    ["c"] = ".",
-    ["%d*d"] = "%%-?%%d+",
-    ["[fg]"] = "%%-?%%d+%%.?%%d*",
-    ["%%%.%d[fg]"] = "%%-?%%d+%%.?%%d*",
-}
-
--- a set of format sequences that are string-based, i.e. not numbers.
-local STRING_BASED_SEQUENCES = {
-    ["s"] = true,
-    ["c"] = true,
-}
-
-local cache = setmetatable({}, {__mode='k'})
--- generate the deformat function for the pattern, or fetch from the cache.
-local function get_deformat_function(pattern)
-    local func = cache[pattern]
-    if func then
-        return func
+function WCLRanks:OnEvent(event, ...)
+  if (event == "ADDON_LOADED") then
+    self:OnAddonLoaded(...);
+  elseif (event == "CHAT_MSG_SYSTEM") then
+    self:OnChatMsgSystem(...);
+  elseif (event == "UPDATE_MOUSEOVER_UNIT") then
+    self:OnMouseoverUnit(...);
+  elseif (event == "MODIFIER_STATE_CHANGED") then
+    self:OnModifierStateChanged(...);
+  elseif (event == "PLAYER_ENTERING_WORLD") then
+    -- Workaround for misaligned tooltip
+    if TacoTipConfig and not TacoTipConfig.show_guild_name then
+      print(self:GetColoredText("error", L["TACOTIP_GUILD_NAME_WARNING"]));
     end
+  else
+    self:LogDebug("OnEvent", event, ...);
+  end
+end
 
-    -- escape the pattern, so that string.match can use it properly
-    local unpattern = '^' .. pattern:gsub("([%(%)%.%*%+%-%[%]%?%^%$%%])", "%%%1") .. '$'
+function WCLRanks:OnAddonLoaded(addonName)
+  if (addonName ~= "WCLRanks") then
+    return;
+  end
+  WCLRanksDB = WCLRanksDB or self.db;
+  self.db = WCLRanksDB;
+  -- Init options panel
+  self:InitOptions();
+  -- Register shlash command
+  if self.db.slashExtension then
+    SLASH_LOGTRACKER1, SLASH_LOGTRACKER2 = '/wr', '/wclranks';
+    SlashCmdList.LOGTRACKER = function(...)
+      WCLRanks:OnSlashCommand(...);
+    end
+  end
+end
 
-    -- a dictionary of index-to-boolean representing whether the index is a number rather than a string.
-    local number_indexes = {}
+function WCLRanks:OnChatMsgSystem(text)
+  if not self.db.chatExtension then
+    return;
+  end
+  local _, _, name, linkText = string.find(text, "|Hplayer:([^:]*)|h%[([^%[%]]*)%]?|h");
+  if name then
+    local playerData, playerName, playerRealm = self:GetPlayerData(name);
+    if playerData then
+      self:SendPlayerInfoToChat(playerData, playerName, playerRealm);
+    end
+  end
+end
 
-    -- (if the pattern is a numbered format,) a dictionary of index-to-real index.
-    local index_translation = nil
+function WCLRanks:OnModifierStateChanged()
+  if not self.db.tooltipExtension then
+    return;
+  end
+  if (UnitExists("mouseover")) then
+    GameTooltip:SetUnit("mouseover");
+  end
+end
 
-    -- the highest found index, also the number of indexes found.
-	local highest_index
-    if not pattern:find("%%1%$") then
-        -- not a numbered format
+function WCLRanks:OnTooltipSetUnit(tooltip, ...)
+  if not self.db.tooltipExtension then
+    return;
+  end
+  local unitName, unitId = GameTooltip:GetUnit();
+  if not UnitIsPlayer(unitId) then
+    return;
+  end
+  if InCombatLockdown() or UnitAffectingCombat("player") then
+    if not self.db.showDuringCombat then
+    	return
+    end
+  end
+  local unitName, unitRealm = UnitName(unitId);
+  local playerData, playerName, playerRealm = self:GetPlayerData(unitName, unitRealm);
+  if playerData then
+    self:SetPlayerInfoTooltip(playerData, playerName, playerRealm);
+  end
+end
 
-        local i = 0
-        while true do
-            i = i + 1
-            local first_index
-            local first_sequence
-            for sequence in pairs(FORMAT_SEQUENCES) do
-                local index = unpattern:find("%%%%" .. sequence)
-                if index and (not first_index or index < first_index) then
-                    first_index = index
-                    first_sequence = sequence
-                end
-            end
-            if not first_index then
-                break
-            end
-            unpattern = unpattern:gsub("%%%%" .. first_sequence, "(" .. FORMAT_SEQUENCES[first_sequence] .. ")", 1)
-            number_indexes[i] = not STRING_BASED_SEQUENCES[first_sequence]
+function WCLRanks:IsTooltipLFGPlayer(tooltip)
+  if not self.db.lfgExtension then
+    return false;
+  end
+  if LFGBrowseSearchEntryTooltip and (tooltip == LFGBrowseSearchEntryTooltip) then
+    return true;
+  else
+    return false;
+  end
+end
+
+function WCLRanks:OnTooltipShow(tooltip, ...)
+  if self:IsTooltipLFGPlayer(tooltip) then
+    self:OnTooltipShow_LFGPlayer(tooltip, ...);
+  end
+end
+
+function WCLRanks:OnTooltipShow_LFGPlayer(tooltip, resultID)
+  local logTargets = nil;
+  local searchResultInfo = C_LFGList.GetSearchResultInfo(resultID);
+  if #searchResultInfo.activityIDs > 0 then
+    for i, activityID in ipairs(searchResultInfo.activityIDs) do
+      self:LogDebug("activityID = " .. activityID);
+      local activityDetails = self.activityDetails[activityID];
+      if activityDetails then
+        local activityKey = activityDetails.zone.."_"..activityDetails.size;
+        if not logTargets then
+          logTargets = {};
         end
-
-        highest_index = i - 1
-    else
-        -- a numbered format
-
-        local i = 0
-		while true do
-		    i = i + 1
-			local found_sequence
-            for sequence in pairs(FORMAT_SEQUENCES) do
-				if unpattern:find("%%%%" .. i .. "%%%$" .. sequence) then
-					found_sequence = sequence
-					break
-				end
-			end
-			if not found_sequence then
-				break
-			end
-			unpattern = unpattern:gsub("%%%%" .. i .. "%%%$" .. found_sequence, "(" .. FORMAT_SEQUENCES[found_sequence] .. ")", 1)
-			number_indexes[i] = not STRING_BASED_SEQUENCES[found_sequence]
-		end
-        highest_index = i - 1
-
-		i = 0
-		index_translation = {}
-		pattern:gsub("%%(%d)%$", function(w)
-		    i = i + 1
-		    index_translation[i] = tonumber(w)
-		end)
+        if not logTargets[activityKey] then
+          logTargets[activityKey] = {};
+        end
+        for e, encounterID in ipairs(activityDetails.encounters) do
+          if not tContains(logTargets[activityKey], encounterID) then
+            tinsert(logTargets[activityKey], encounterID);
+          end
+        end
+      end
     end
+  end
+  -- Tooltip for lead / single player
+  local tooltipName = tooltip:GetName();
+  local playerLine = tooltip.Leader.Name:GetText();
+  local playerNameTooltip = strsplit("_", playerLine);
+  playerNameTooltip = strtrim(playerNameTooltip);
+  local playerData, playerName, playerRealm = self:GetPlayerData(playerNameTooltip);
+  if playerData then
+    -- Add instance top rank for leader
+    if not tooltip.Leader.Logs then
+      tooltip.Leader.Logs = tooltip.Leader:CreateFontString(nil, "ARTWORK", "GameFontNormal");
+      tooltip.Leader.Logs:SetPoint("TOPLEFT", tooltip.Leader.Role, "TOPRIGHT", 32, -2)
+    end
+    tooltip.Leader.Logs:SetText(self:GetPlayerOverallPerformance(playerData, logTargets));
+    -- Add tooltip for leader
+    GameTooltip:ClearLines();
+    GameTooltip:SetOwner(LFGBrowseSearchEntryTooltip);
+    GameTooltip:SetText(playerNameTooltip);
+    self:SetPlayerInfoTooltip(playerData, playerName, playerRealm, true);
+    -- TODO: Solve positioning cleaner
+    C_Timer.After(0, function()
+      GameTooltip:ClearAllPoints();
+      GameTooltip:SetPoint("TOPLEFT", LFGBrowseSearchEntryTooltip, "BOTTOMLEFT");
+    end);
+  else
+    GameTooltip:ClearLines();
+    GameTooltip:Hide();
+  end
+  -- Tooltip for additional members
+  for frame in tooltip.memberPool:EnumerateActive() do
+    self:OnTooltipShow_LFGMember(frame, logTargets);
+  end
+  -- Increase width to prevent overlap
+  tooltip:SetWidth( tooltip:GetWidth() + 32 );
+end
 
-    if highest_index == 0 then
-        cache[pattern] = do_nothing
+function WCLRanks:OnTooltipShow_LFGMember(frame, logTargets)
+  if not frame.Logs then
+    frame.Logs = frame:CreateFontString(nil, "ARTWORK", "GameFontNormal");
+    frame.Logs:SetPoint("TOPLEFT", frame.Role, "TOPRIGHT", 32, -2)
+  end
+  local memberName = frame.Name:GetText();
+  local playerData, playerName, playerRealm = self:GetPlayerData(memberName);
+  if playerData then
+    frame.Logs:SetText(self:GetPlayerOverallPerformance(playerData, logTargets));
+  else
+    frame.Logs:SetText(self:GetColoredText("muted", "--"));
+  end
+end
+
+function WCLRanks:GetIconSized(iconTemplate, width, height)
+  local iconString = gsub(gsub(iconTemplate, "%%w", width), "%%h", height);
+  return "|T"..iconString.."|t";
+end
+
+-- /script print(WCLRanks:GetClassIcon("Priest"))
+-- /script print("\124TInterface/AddOns/WCLRanks/Icons/classes:36:36:0:0:256:512:180:216:36:72\124t")
+-- /script print("\124TInterface/InventoryItems/WoWUnknownItem01\124t")
+function WCLRanks:GetClassIcon(classNameOrId, width, height)
+  if not width then
+    width = 14;
+  end
+  if not height then
+    height = 14;
+  end
+  --local addonLoaded = LoadAddOn("WCLRanks_BaseData");
+  --if not addonLoaded or not WCLRanks_BaseData or not WCLRanks_BaseData.classes or not WCLRanks_BaseData.classes[classNameOrId] then
+  --  return self:GetIconSized("Interface/InventoryItems/WoWUnknownItem01:%w:%h", width, height);
+  --end
+  local classData = WCLRanks_BaseData.classes[classNameOrId];
+  return self:GetIconSized(classData.icon, width, height);
+end
+
+function WCLRanks:GetSpecIcon(classNameOrId, specNameOrId, width, height)
+  if not width then
+    width = 14;
+  end
+  if not height then
+    height = 14;
+  end
+  --local addonLoaded = LoadAddOn("WCLRanks_BaseData");
+  --if not addonLoaded or not WCLRanks_BaseData or not WCLRanks_BaseData.classes or not WCLRanks_BaseData.classes[classNameOrId]
+  --    or not WCLRanks_BaseData.classes[classNameOrId].specs or not WCLRanks_BaseData.classes[classNameOrId].specs[specNameOrId] then
+  --  return self:GetIconSized("Interface/InventoryItems/WoWUnknownItem01:%w:%h", width, height);
+  --end
+  local classData = WCLRanks_BaseData.classes[classNameOrId];
+  local specData = classData.specs[specNameOrId];
+  return self:GetIconSized(specData.icon, width, height);
+end
+
+function WCLRanks:GetColoredText(type, text)
+  if (type == "zone") then
+    return "|cffdd60ff"..text.."|r";
+  elseif (type == "spec") then
+    return "|cffffffff"..text.."|r";
+  elseif (type == "muted") then
+    return "|cff808080"..text.."|r";
+  elseif (type == "error") then
+    return "|cffff0000"..text.."|r";
+  else
+    return text;
+  end
+end
+
+function WCLRanks:GetColoredProgress(done, overall)
+  if (done == 0) then
+    return "|cffd00000"..done.."/"..overall.."|r";
+  elseif (done < overall) then
+    return "|cffd0d000"..done.."/"..overall.."|r";
+  else
+    return "|cff00d000"..done.."/"..overall.."|r";
+  end
+end
+
+function WCLRanks:GetColoredPercent(value, text)
+  value = floor(value);
+  if (value >= 100) then
+    return "|cFFE5CC80"..text.."|r";
+  elseif (value >= 99) then
+    return "|cFFE26880"..text.."|r";
+  elseif (value >= 95) then
+    return "|cFFFF8000"..text.."|r";
+  elseif (value >= 85) then
+    return "|cFFBE8200"..text.."|r";
+  elseif (value >= 75) then
+    return "|cFFA335EE"..text.."|r";
+  elseif (value >= 50) then
+    return "|cFF0070FF"..text.."|r";
+  elseif (value >= 25) then
+    return "|cFF1EFF00"..text.."|r";
+  else
+    return "|cFF666666"..text.."|r";
+  end
+end
+
+function WCLRanks:GetPlayerLink(playerName)
+  return self:GetColoredText("player", "|Hplayer:"..playerName.."|h["..playerName.."]|h");
+end
+
+function WCLRanks:GetPlayerData(playerFull, realmNameExplicit)
+  local playerName, realmName = strsplit("_", playerFull);
+  if not realmName then
+    if not realmNameExplicit or (realmNameExplicit == "") then
+      realmName = GetRealmName();
     else
-        --[=[
-            -- resultant function looks something like this:
-            local unpattern = ...
-            return function(text)
-                local a1, a2 = text:match(unpattern)
-                if not a1 then
-                    return nil, nil
-                end
-                return a1+0, a2
-            end
+      realmName = realmNameExplicit
+    end
+  end
+  self:LogDebug("playerName = " .. playerName);
 
-            -- or if it were a numbered pattern,
-            local unpattern = ...
-            return function(text)
-                local a2, a1 = text:match(unpattern)
-                if not a1 then
-                    return nil, nil
-                end
-                return a1+0, a2
-            end
-        ]=]
+  if type(WP_Database) ~= "table" then
+    self:LogDebug("WP_Database is NOT a table!!")
+    return nil
+  end
+  if not WP_Database[playerName] then
+    return nil
+  end
 
-        local t = {}
-        t[#t+1] = [=[
-            return function(text)
-                local ]=]
-
-        for i = 1, highest_index do
-            if i ~= 1 then
-                t[#t+1] = ", "
-            end
-            t[#t+1] = "a"
-            if not index_translation then
-                t[#t+1] = i
+  local characterDataRaw = WP_Database[playerName]
+  local characterData = nil;
+  -- Unpack character data into a more accessible format
+  if characterDataRaw then
+    local characterPerformance = {};
+    for zoneIdSize, zonePerformance in pairs(characterDataRaw[3]) do
+      local zoneId, zoneSize = strsplit("_", zoneIdSize);
+      zoneId = tonumber(zoneId);
+      zoneSize = tonumber(zoneSize);
+      if not self.db.show[zoneIdSize] then
+        self:LogDebug(zoneIdSize .. " is disabled")
+      else
+        self:LogDebug("zoneId = " .. zoneId .. ", zoneSize = " .. zoneSize)
+        -- Zone name
+        local zoneName = "Unknown ("..zoneSize..")";
+        if WCLRanks_BaseData.zoneNames and WCLRanks_BaseData.zoneNames[zoneId] then
+          zoneName = WCLRanks_BaseData.zoneNames[zoneId]['name'].."("..zoneSize..")";
+        end
+        self:LogDebug("zoneName = " .. zoneName)
+        -- Allstars rankings {A,1,703.76,47.53,153,944,56202} (color, spec_id, points, rank_percent, server_rank, region_rank, rank)
+        local zoneAllstars = {};
+        for _, zoneAllstarsRaw in ipairs(zonePerformance[3]) do
+          tinsert(zoneAllstars, {
+            ['color'] = zoneAllstarsRaw[1],
+            ['spec'] = tonumber(zoneAllstarsRaw[2]),
+            ['points'] = zoneAllstarsRaw[3],
+            ['percentRank'] = zoneAllstarsRaw[4],
+            ['serverRank'] = zoneAllstarsRaw[5],
+            ['regionRank'] = zoneAllstarsRaw[6],
+            ['rank'] = zoneAllstarsRaw[7]
+          });
+          self:LogDebug("zoneAllstarsRaw = " .. dump(zoneAllstarsRaw))
+        end
+        -- Encounters 3,82.67,80.44,38,135,9381
+        local zoneEncounters = {};
+        if zonePerformance[4] ~= "" then
+          local zoneEncountersStr = { strsplit("|", zonePerformance[4]) };
+          for zoneEncounterIndex, zoneEncountersRaw in ipairs(zoneEncountersStr) do
+            if (zoneEncountersRaw ~= "") then
+              zoneEncountersRaw = { strsplit(",", zoneEncountersRaw) };
             else
-                t[#t+1] = index_translation[i]
+              zoneEncountersRaw = { 0, 0, 0 };
             end
+            tinsert(zoneEncounters, {
+              ['spec'] = tonumber(zoneEncountersRaw[1]),
+              ['encounter'] = WCLRanks_BaseData.zoneEncounters[zoneId][zoneEncounterIndex],
+              ['points'] = zoneEncountersRaw[2],
+              ['percentRank'] = zoneEncountersRaw[3],
+              ['serverRank'] = zoneEncountersRaw[4],
+              ['regionRank'] = zoneEncountersRaw[5],
+              ['rank'] = zoneEncountersRaw[6]
+            });
+          end
         end
-
-        t[#t+1] = [=[ = text:match(]=]
-        t[#t+1] = ("%q"):format(unpattern)
-        t[#t+1] = [=[)
-                if not a1 then
-                    return ]=]
-
-        for i = 1, highest_index do
-            if i ~= 1 then
-                t[#t+1] = ", "
-            end
-            t[#t+1] = "nil"
-        end
-
-        t[#t+1] = "\n"
-        t[#t+1] = [=[
-                end
-                ]=]
-
-        t[#t+1] = "return "
-        for i = 1, highest_index do
-            if i ~= 1 then
-                t[#t+1] = ", "
-            end
-            t[#t+1] = "a"
-            t[#t+1] = i
-            if number_indexes[i] then
-                t[#t+1] = "+0"
-            end
-        end
-        t[#t+1] = "\n"
-        t[#t+1] = [=[
-            end
-        ]=]
-
-        t = table.concat(t, "")
-
-        -- print(t)
-
-        cache[pattern] = assert(loadstring(t))()
+        -- Zone details
+        characterPerformance[zoneIdSize] = {
+          ['zoneName'] = zoneName,
+          ['zoneEncounters'] = zonePerformance[1],
+          ['encountersKilled'] = zonePerformance[2],
+          ['allstars'] = zoneAllstars,
+          ['encounters'] = zoneEncounters
+        }
+      end
     end
-
-    return cache[pattern]
+    -- Character details
+    characterData = {
+      ['class'] = tonumber(characterDataRaw[1]),
+      ['last_update'] = characterDataRaw[2],
+      ['performance'] = characterPerformance,
+    };
+  end
+  return characterData, playerName, realmName;
 end
 
-function Deformat(text, pattern)
-    if type(text) ~= "string" then
-        error(("Argument #1 to `Deformat' must be a string, got %s (%s)."):format(type(text), text), 2)
-    elseif type(pattern) ~= "string" then
-        error(("Argument #2 to `Deformat' must be a string, got %s (%s)."):format(type(pattern), pattern), 2)
+function WCLRanks:GetPlayerOverallPerformance(playerData, logTargets)
+  local logScoreValue = 0;
+  local logScoreCount = 0;
+  for zoneId, zoneData in pairs(playerData['performance']) do
+    for _, encounterData in ipairs(zoneData['encounters']) do
+      local targetEncounters = nil;
+      if logTargets and logTargets[zoneId] then
+        targetEncounters = logTargets[zoneId];
+      end
+      if not logTargets or (targetEncounters and tContains(targetEncounters, encounterData['encounter']['id'])) then
+        -- logTargets is either nil (include every encounter) or it contains the given encounter
+        logScoreValue = logScoreValue + encounterData['percentRank'];
+        logScoreCount = logScoreCount + 1;
+      end
     end
-
-    return get_deformat_function(pattern)(text)
+  end
+  if (logScoreCount > 0) then
+    percent = logScoreValue / logScoreCount
+    return self:GetColoredPercent(percent, percent);
+  else
+    return self:GetColoredText("muted", "--");
+  end
 end
 
+function WCLRanks:GetPlayerZonePerformance(zone, playerClass)
+  local zoneName = zone.zoneName;
+  local zoneProgress = self:GetColoredProgress(tonumber(zone.encountersKilled), tonumber(zone.zoneEncounters));
+  local zoneRatingsStr = "";
+  local zoneRatings = {};
+  for _, allstarsRating in ipairs(zone.allstars) do
+    percent = allstarsRating.percentRank
+    text = allstarsRating.points .. '/' .. percent .. '% Ranks:' .. allstarsRating.serverRank .. '/' .. allstarsRating.regionRank .. '/' .. allstarsRating.rank
+    if allstarsRating.color == 'A' then
+       percent = 100
+    end
+    tinsert(zoneRatings, self:GetSpecIcon(playerClass, allstarsRating.spec).." "..self:GetColoredPercent(percent, text));
+  end
+  if #(zoneRatings) > 0 then
+    zoneRatingsStr = strjoin(" ", unpack(zoneRatings));
+  end
+  return self:GetColoredText("zone", zoneName), self:GetColoredText("progress", zoneProgress), zoneRatingsStr;
+end
 
+function WCLRanks:GetPlayerEncounterPerformance(encounter, playerClass, reversed)
+  local encounterName = encounter.encounter.name;
+  if (encounter.spec == 0) then
+    return self:GetColoredText("encounter", encounterName), "---";
+  end
+  local encounterRating = self:GetSpecIcon(playerClass, encounter.spec).." "..self:GetColoredPercent(encounter.percentRank, encounter.percentRank);
+  if (reversed) then
+    percent = encounter.percentRank
+    text = encounter.points .. '/' .. encounter.percentRank .. '% (' .. encounter.serverRank .. '/' .. encounter.regionRank .. '/' .. encounter.rank .. ')'
+    encounterRating = self:GetColoredPercent(percent, text).." "..self:GetSpecIcon(playerClass, encounter.spec);
+  end
+  return self:GetColoredText("encounter", encounterName), encounterRating;
+end
+
+function WCLRanks:SendSystemChatLine(text)
+  local chatInfo = ChatTypeInfo["SYSTEM"];
+  local i;
+  for i=1, 16 do
+    local chatFrame = _G["ChatFrame"..i];
+    if (chatFrame) then
+      chatFrame:AddMessage(text, chatInfo.r, chatInfo.g, chatInfo.b, chatInfo.id);
+    end
+  end
+end
+
+function WCLRanks:SendPlayerInfoToChat(playerData, playerName, playerRealm, showEncounters)
+  for zoneId, zone in pairs(playerData.performance) do
+    local zoneName, zoneProgress, zoneSpecs = self:GetPlayerZonePerformance(zone, playerData.class);
+    self:SendSystemChatLine( self:GetPlayerLink(playerName).." "..strjoin(" ", self:GetPlayerZonePerformance(zone, playerData.class)) );
+    if showEncounters then
+      for _, encounter in ipairs(zone.encounters) do
+        local encounterName, encounterRating = self:GetPlayerEncounterPerformance(encounter, playerData.class);
+        self:SendSystemChatLine("  "..encounterName..": "..encounterRating);
+      end
+    end
+  end
+  self:SendSystemChatLine(L["DATE_UPDATE"]..": "..date(L["DATE_FORMAT"], playerData.last_update));
+end
+
+function WCLRanks:SetPlayerInfoTooltip(playerData, playerName, playerRealm, disableShiftNotice)
+  self:LogDebug("WCLRanks:SetPlayerInfoTooltip")
+  for zoneIdSize, zone in pairs(playerData.performance) do
+    local zoneId, zoneSize = strsplit("_", zoneIdSize);
+    local zoneName, zoneProgress, zoneSpecs = self:GetPlayerZonePerformance(zone, playerData.class);
+    GameTooltip:AddDoubleLine(
+      zoneName.." "..zoneProgress, zoneSpecs,
+      1, 1, 1, 1, 1, 1
+    );
+    if IsShiftKeyDown() then
+      for _, encounter in ipairs(zone.encounters) do
+        local encounterName, encounterRating = self:GetPlayerEncounterPerformance(encounter, playerData.class, true);
+        GameTooltip:AddDoubleLine(
+          "  "..encounterName, encounterRating,
+          1, 1, 1, 1, 1, 1
+        );
+      end
+    end
+  end
+  if IsShiftKeyDown() then
+    GameTooltip:AddDoubleLine(
+      L["DATE_UPDATE"], date(L["DATE_FORMAT"], playerData.last_update),
+      0.5, 0.5, 0.5, 0.5, 0.5, 0.5
+    );
+  end
+  if not IsShiftKeyDown() and not disableShiftNotice then
+    GameTooltip:AddLine(
+      self:GetColoredText("muted", L["SHIFT_FOR_DETAILS"]),
+      1, 1, 1
+    );
+  end
+  GameTooltip:Show();
+end
+
+-- Kickstart the addon
+WCLRanks:Init();
