@@ -132,13 +132,13 @@ function WCLRanks:InitOptions()
 	self.optionCheckSlash:SetChecked(self.db.slashExtension);
 	pos_y = pos_y - 20
   -- Show tooltip logs During combat
-  self.optionCheckSlash = CreateFrame("CheckButton", nil, self.optionsPanel, "InterfaceOptionsCheckButtonTemplate");
-	self.optionCheckSlash:SetPoint("TOPLEFT", 20, pos_y);
-	self.optionCheckSlash.Text:SetText(L["OPTION_DURING_COMBAT"]);
-	self.optionCheckSlash:SetScript("OnClick", function(_, value)
-		self.db.showDuringCombat = self.optionCheckSlash:GetChecked();
+  self.optionDuringCombat = CreateFrame("CheckButton", nil, self.optionsPanel, "InterfaceOptionsCheckButtonTemplate");
+	self.optionDuringCombat:SetPoint("TOPLEFT", 20, pos_y);
+	self.optionDuringCombat.Text:SetText(L["OPTION_DURING_COMBAT"]);
+	self.optionDuringCombat:SetScript("OnClick", function(_, value)
+		self.db.showDuringCombat = self.optionDuringCombat:GetChecked();
 	end)
-	self.optionCheckSlash:SetChecked(self.db.showDuringCombat);
+	self.optionDuringCombat:SetChecked(self.db.showDuringCombat);
 	pos_y = pos_y - 20
   -- Show NAXX/Sarth/Maly 10 player logs
   self.optionShow_1015_10 = CreateFrame("CheckButton", nil, self.optionsPanel, "InterfaceOptionsCheckButtonTemplate");
