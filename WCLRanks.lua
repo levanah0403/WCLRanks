@@ -179,12 +179,12 @@ function WCLRanks:InitOptions()
 end
 
 function WCLRanks:LogOutput(...)
-  print("|cffff0000LT|r", ...);
+  print("|cffff0000WCLRanks|r", ...);
 end
 
 function WCLRanks:LogDebug(...)
   if self.debug then
-    print("|cffff0000LT|r", "|cffffff00Debug|r", ...);
+    print("|cffff0000WCLRanks|r", "|cffffff00Debug|r", ...);
   end
 end
 
