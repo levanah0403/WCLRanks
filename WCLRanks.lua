@@ -84,6 +84,8 @@ function WCLRanks:Init()
   self.db.show["1015_25"] = true;
   self.db.show["1016_10"] = true;
   self.db.show["1016_25"] = true;
+  self.db.show["1017_10"] = true;
+  self.db.show["1017_25"] = true;
   self:LogDebug("Init");
   self:SetScript("OnEvent", self.OnEvent);
   self:RegisterEvent("ADDON_LOADED");
@@ -175,6 +177,24 @@ function WCLRanks:InitOptions()
 		self.db.show["1016_25"] = self.optionShow_1016_25:GetChecked();
 	end)
 	self.optionShow_1016_25:SetChecked(self.db.show["1016_25"]);
+	pos_y = pos_y - 20
+  -- Show Ulduar 10 player logs
+  self.optionShow_1017_10 = CreateFrame("CheckButton", nil, self.optionsPanel, "InterfaceOptionsCheckButtonTemplate");
+	self.optionShow_1017_10:SetPoint("TOPLEFT", 20, pos_y);
+	self.optionShow_1017_10.Text:SetText(L["OPTION_SHOW_1017_10"]);
+	self.optionShow_1017_10:SetScript("OnClick", function(_, value)
+		self.db.show["1017_10"] = self.optionShow_1017_10:GetChecked();
+	end)
+	self.optionShow_1017_10:SetChecked(self.db.show["1017_10"]);
+	pos_y = pos_y - 20
+  -- Show Ulduar 25 player logs
+  self.optionShow_1017_25 = CreateFrame("CheckButton", nil, self.optionsPanel, "InterfaceOptionsCheckButtonTemplate");
+	self.optionShow_1017_25:SetPoint("TOPLEFT", 20, pos_y);
+	self.optionShow_1017_25.Text:SetText(L["OPTION_SHOW_1017_25"]);
+	self.optionShow_1017_25:SetScript("OnClick", function(_, value)
+		self.db.show["1017_25"] = self.optionShow_1017_25:GetChecked();
+	end)
+	self.optionShow_1017_25:SetChecked(self.db.show["1017_25"]);
 	pos_y = pos_y - 20
 end
 

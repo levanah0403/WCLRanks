@@ -979,8 +979,13 @@ WCLRanks_BaseData = {
 		},
 		[1016]={
 			['id']='1016',
-			['name']='Vault of Archavon',
+			['name']='亞夏梵穹殿',
 			['encounters']='1'
+		},
+		[1017]={
+			['id']='1017',
+			['name']='奧杜亞',
+			['encounters']='14'
 		}
 	},
 	['zoneEncounters']={
@@ -1132,6 +1137,64 @@ WCLRanks_BaseData = {
 				['name']='『石之看守者』亞夏梵',
 				['journalID']=0
 			}
-		}
+		},
+		[1017]={
+			{
+				['id']=744,
+				['name']='烈焰戰輪',--"Flame Leviathan"
+			},
+			{
+				['id']=745,
+				['name']='『火爐之主』伊格尼司',--"Ignis the Furnace Master"
+			},
+			{
+				['id']=746,
+				['name']='銳鱗',--"Razorscale"
+			},
+			{
+				['id']=747,
+				['name']='XT-002拆解者',--"XT-002 Deconstructor"
+			},
+			{
+				['id']=748,
+				['name']='鐵之議會',--"The Assembly of Iron"
+			},
+			{
+				['id']=749,
+				['name']='柯洛剛恩',--"Kologarn"
+			},
+			{
+				['id']=750,
+				['name']='奧芮雅',--"Auriaya"
+			},
+			{
+				['id']=751,
+				['name']='霍迪爾',--"Hodir"
+			},
+			{
+				['id']=752,
+				['name']='索林姆',--"Thorim"
+			},
+			{
+				['id']=753,
+				['name']='芙蕾雅',--"Freya"
+			},
+			{
+				['id']=754,
+				['name']='彌米倫',--"Mimiron"
+			},
+			{
+				['id']=755,
+				['name']='威札斯將軍',--"General Vezax"
+			},
+			{
+				['id']=756,
+				['name']='尤格薩倫',--"Yogg-Saron"
+			},
+			{
+				['id']=757,
+				['name']='『觀察者』艾爾加隆',--"Algalon the Observer"
+			},
+		},
 	},
 };
