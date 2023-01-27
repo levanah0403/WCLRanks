@@ -553,7 +553,7 @@ function WCLRanks:GetPlayerData(playerFull, realmNameExplicit)
             if (zoneEncountersRaw ~= "") then
               zoneEncountersRaw = { strsplit(",", zoneEncountersRaw) };
             else
-              zoneEncountersRaw = { 0, 0, 0 };
+              zoneEncountersRaw = { 0, 0, 0, 0, 0, 0 };
             end
             tinsert(zoneEncounters, {
               ['spec'] = tonumber(zoneEncountersRaw[1]),
