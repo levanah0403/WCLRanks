@@ -27,6 +27,8 @@ function WCLRanks:Init()
     tooltipExtension = true,
     slashExtension = true,
     showDuringCombat = false,
+    showCompatMode = false,
+    showNumSpec = 2,
     show = {},
   };
   self.activityDetails = {
@@ -142,6 +144,31 @@ function WCLRanks:InitOptions()
 	end)
 	self.optionDuringCombat:SetChecked(self.db.showDuringCombat);
 	pos_y = pos_y - 20
+  -- Show compat info on tooltip
+  self.optionCompatMode = CreateFrame("CheckButton", nil, self.optionsPanel, "InterfaceOptionsCheckButtonTemplate");
+	self.optionCompatMode:SetPoint("TOPLEFT", 20, pos_y);
+	self.optionCompatMode.Text:SetText(L["OPTION_COMPAT_MODE"]);
+	self.optionCompatMode:SetScript("OnClick", function(_, value)
+		self.db.showCompatMode = self.optionCompatMode:GetChecked();
+	end)
+	self.optionCompatMode:SetChecked(self.db.showCompatMode);
+	pos_y = pos_y - 20
+  -- Show how many specs all star scores
+  self.optionNumSpec = CreateFrame("Slider", "LoseControlFixScaleSlider", self.optionsPanel, "OptionsSliderTemplate");
+	self.optionNumSpec:SetPoint("TOPLEFT", 70, pos_y - 20);
+        self.optionNumSpec:SetMinMaxValues(1, 5);
+        self.optionNumSpec.low = 1;
+        self.optionNumSpec.high = 5;
+	getglobal(self.optionNumSpec:GetName() .. 'Low'):SetText('1');
+	getglobal(self.optionNumSpec:GetName() .. 'High'):SetText('5');
+	getglobal(self.optionNumSpec:GetName() .. 'Text'):SetText(string.format("%s: %d", L["OPTION_NUM_SPEC"], self.db.showNumSpec));
+        self.optionNumSpec:SetValueStep(1);
+	self.optionNumSpec:SetScript("OnValueChanged", function(_, value)
+		self.db.showNumSpec = self.optionNumSpec:GetValue();
+		getglobal(self.optionNumSpec:GetName() .. 'Text'):SetText(string.format("%s: %d", L["OPTION_NUM_SPEC"], self.db.showNumSpec));
+	end)
+	self.optionNumSpec:SetValue(self.db.showNumSpec, false);
+	pos_y = pos_y - 40
   -- Show NAXX/Sarth/Maly 10 player logs
   self.optionShow_1015_10 = CreateFrame("CheckButton", nil, self.optionsPanel, "InterfaceOptionsCheckButtonTemplate");
 	self.optionShow_1015_10:SetPoint("TOPLEFT", 20, pos_y);
@@ -533,17 +560,21 @@ function WCLRanks:GetPlayerData(playerFull, realmNameExplicit)
         self:LogDebug("zoneName = " .. zoneName)
         -- Allstars rankings {A,1,703.76,47.53,153,944,56202} (color, spec_id, points, rank_percent, server_rank, region_rank, rank)
         local zoneAllstars = {};
+        local numSpec = 0;
         for _, zoneAllstarsRaw in ipairs(zonePerformance[3]) do
-          tinsert(zoneAllstars, {
-            ['color'] = zoneAllstarsRaw[1],
-            ['spec'] = tonumber(zoneAllstarsRaw[2]),
-            ['points'] = zoneAllstarsRaw[3],
-            ['percentRank'] = zoneAllstarsRaw[4],
-            ['serverRank'] = zoneAllstarsRaw[5],
-            ['regionRank'] = zoneAllstarsRaw[6],
-            ['rank'] = zoneAllstarsRaw[7]
-          });
-          self:LogDebug("zoneAllstarsRaw = " .. dump(zoneAllstarsRaw))
+          if numSpec < self.db.showNumSpec then
+            numSpec = numSpec + 1
+            tinsert(zoneAllstars, {
+              ['color'] = zoneAllstarsRaw[1],
+              ['spec'] = tonumber(zoneAllstarsRaw[2]),
+              ['points'] = zoneAllstarsRaw[3],
+              ['percentRank'] = zoneAllstarsRaw[4],
+              ['serverRank'] = zoneAllstarsRaw[5],
+              ['regionRank'] = zoneAllstarsRaw[6],
+              ['rank'] = zoneAllstarsRaw[7]
+            });
+            self:LogDebug("zoneAllstarsRaw = " .. dump(zoneAllstarsRaw))
+	  end
         end
         -- Encounters 3,82.67,80.44,38,135,9381
         local zoneEncounters = {};
@@ -616,8 +647,13 @@ function WCLRanks:GetPlayerZonePerformance(zone, playerClass)
   local zoneRatingsStr = "";
   local zoneRatings = {};
   for _, allstarsRating in ipairs(zone.allstars) do
-    percent = allstarsRating.percentRank
-    text = allstarsRating.points .. '/' .. percent .. '% Ranks:' .. allstarsRating.serverRank .. '/' .. allstarsRating.regionRank .. '/' .. allstarsRating.rank
+    local percent = allstarsRating.percentRank
+    local text = ""
+    if self.db.showCompatMode and not IsShiftKeyDown() then
+       text = percent .. '%'
+    else
+       text = allstarsRating.points .. '/' .. percent .. '% Ranks:' .. allstarsRating.serverRank .. '/' .. allstarsRating.regionRank .. '/' .. allstarsRating.rank
+    end
     if allstarsRating.color == 'A' then
        percent = 100
     end
