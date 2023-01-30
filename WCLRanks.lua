@@ -54,7 +54,7 @@ function WCLRanks:Init()
     [1095] = {
       zone = 1016,
       size = 10,
-      encounters = { 772 }
+      encounters = { 772, 774 }
     },
     -- Naxxramas 25-man
     [1098] = {
@@ -78,7 +78,7 @@ function WCLRanks:Init()
     [1096] = {
       zone = 1016,
       size = 25,
-      encounters = { 772 }
+      encounters = { 772, 774 }
     },
   };
   self.db = CopyTable(self.defaults);
