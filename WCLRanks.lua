@@ -262,6 +262,15 @@ function WCLRanks:OnSlashCommand(cmd)
         return;
       end
     end
+-- command "m" for mouseover
+  elseif cmd == "m" or cmd == "M" then
+    if UnitExists("mouseover") then
+      if UnitIsPlayer("mouseover") then
+        cmd = UnitName("mouseover");
+      else
+        return;
+      end
+    end
 -- command "s" for self
   elseif cmd == "s" or cmd == "S" then
     cmd = UnitName("player");
