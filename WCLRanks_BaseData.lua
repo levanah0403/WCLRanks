@@ -1,1234 +1,585 @@
-WCLRanks_BaseData = {
-	['classes']={
-		[1]={
-			['id']='1',
-			['name']='Death Knight',
-			['slug']='DeathKnight',
-			['icon']='Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:0:36:144:180',
-			['specs']={
-				[1]={['id']='1',['name']='Blood',['slug']='Blood',['icon']='Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:36:72:144:180'},
-				['Blood']={['id']='1',['name']='Blood',['slug']='Blood',['icon']='Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:36:72:144:180'},
-				[2]={['id']='2',['name']='Frost',['slug']='Frost',['icon']='Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:72:108:144:180'},
-				['Frost']={['id']='2',['name']='Frost',['slug']='Frost',['icon']='Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:72:108:144:180'},
-				[3]={['id']='3',['name']='Unholy',['slug']='Unholy',['icon']='Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:108:144:144:180'},
-				['Unholy']={['id']='3',['name']='Unholy',['slug']='Unholy',['icon']='Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:108:144:144:180'},
-				[4]={['id']='4',['name']='Lichborne',['slug']='Lichborne',['icon']='Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:72:108:144:180'},
-				['Lichborne']={['id']='4',['name']='Lichborne',['slug']='Lichborne',['icon']='Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:72:108:144:180'},
-				[5]={['id']='5',['name']='Runeblade',['slug']='Runeblade',['icon']='Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:36:72:144:180'},
-				['Runeblade']={['id']='5',['name']='Runeblade',['slug']='Runeblade',['icon']='Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:36:72:144:180'}
-			}
-		},
-		['DeathKnight']={
-			['id']='1',
-			['name']='Death Knight',
-			['slug']='DeathKnight',
-			['icon']='Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:0:36:144:180',
-			['specs']={
-				[1]={['id']='1',['name']='Blood',['slug']='Blood',['icon']='Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:36:72:144:180'},
-				['Blood']={['id']='1',['name']='Blood',['slug']='Blood',['icon']='Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:36:72:144:180'},
-				[2]={['id']='2',['name']='Frost',['slug']='Frost',['icon']='Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:72:108:144:180'},
-				['Frost']={['id']='2',['name']='Frost',['slug']='Frost',['icon']='Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:72:108:144:180'},
-				[3]={['id']='3',['name']='Unholy',['slug']='Unholy',['icon']='Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:108:144:144:180'},
-				['Unholy']={['id']='3',['name']='Unholy',['slug']='Unholy',['icon']='Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:108:144:144:180'},
-				[4]={['id']='4',['name']='Lichborne',['slug']='Lichborne',['icon']='Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:72:108:144:180'},
-				['Lichborne']={['id']='4',['name']='Lichborne',['slug']='Lichborne',['icon']='Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:72:108:144:180'},
-				[5]={['id']='5',['name']='Runeblade',['slug']='Runeblade',['icon']='Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:36:72:144:180'},
-				['Runeblade']={['id']='5',['name']='Runeblade',['slug']='Runeblade',['icon']='Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:36:72:144:180'}
-			}
-		},
-		[2]={
-			['id']='2',
-			['name']='Druid',
-			['slug']='Druid',
-			['icon']='Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:0:36:36:72',
-			['specs']={
-				[1]={
-					['id']='1',
-					['name']='Balance',
-					['slug']='Balance',
-					['icon']='Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:36:72:36:72'
-				},
-				['Balance']={
-					['id']='1',
-					['name']='Balance',
-					['slug']='Balance',
-					['icon']='Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:36:72:36:72'
-				},
-				[2]={
-					['id']='2',
-					['name']='Feral',
-					['slug']='Feral',
-					['icon']='Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:72:108:36:72'
-				},
-				['Feral']={
-					['id']='2',
-					['name']='Feral',
-					['slug']='Feral',
-					['icon']='Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:72:108:36:72'
-				},
-				[3]={
-					['id']='3',
-					['name']='Guardian',
-					['slug']='Guardian',
-					['icon']='Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:108:144:36:72'
-				},
-				['Guardian']={
-					['id']='3',
-					['name']='Guardian',
-					['slug']='Guardian',
-					['icon']='Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:108:144:36:72'
-				},
-				[4]={
-					['id']='4',
-					['name']='Restoration',
-					['slug']='Restoration',
-					['icon']='Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:144:180:36:72'
-				},
-				['Restoration']={
-					['id']='4',
-					['name']='Restoration',
-					['slug']='Restoration',
-					['icon']='Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:144:180:36:72'
-				},
-				[5]={
-					['id']='5',
-					['name']='Warden',
-					['slug']='Warden',
-					['icon']='Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:180:216:36:72'
-				},
-				['Warden']={
-					['id']='5',
-					['name']='Warden',
-					['slug']='Warden',
-					['icon']='Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:180:216:36:72'
-				}
-			}
-		},
+WCLRanks_BaseData = {};
 
-		['Druid']={
-			['id']='2',
-			['name']='Druid',
-			['slug']='Druid',
-			['icon']='Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:0:36:36:72',
-			['specs']={
-				[1]={
-					['id']='1',
-				['name']='Balance',
-				['slug']='Balance',
-				['icon']='Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:36:72:36:72'
-				},
-				['Balance']={
-					['id']='1',
-					['name']='Balance',
-					['slug']='Balance',
-					['icon']='Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:36:72:36:72'
-				},
-				[2]={['id']='2',
-					['name']='Feral',
-					['slug']='Feral',
-					['icon']='Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:72:108:36:72'
-				},
-				['Feral']={
-					['id']='2',
-					['name']='Feral',
-					['slug']='Feral',
-					['icon']='Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:72:108:36:72'
-				},
-				[3]={
-					['id']='3',
-					['name']='Guardian',
-					['slug']='Guardian',
-					['icon']='Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:108:144:36:72'
-				},
-				['Guardian']={
-					['id']='3',
-					['name']='Guardian',
-					['slug']='Guardian',
-					['icon']='Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:108:144:36:72'
-				},
-				[4]={
-					['id']='4',
-					['name']='Restoration',
-					['slug']='Restoration',
-					['icon']='Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:144:180:36:72'
-				},
-				['Restoration']={
-					['id']='4',
-					['name']='Restoration',
-					['slug']='Restoration',
-					['icon']='Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:144:180:36:72'
-				},
-				[5]={
-					['id']='5',
-					['name']='Warden',
-					['slug']='Warden',
-					['icon']='Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:180:216:36:72'
-				},
-				['Warden']={
-					['id']='5',
-					['name']='Warden',
-					['slug']='Warden',
-					['icon']='Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:180:216:36:72'
-				}
-			}
-		},
-
-		[3]={
-			['id']='3',
-			['name']='Hunter',
-			['slug']='Hunter',
-			['icon']='Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:0:36:72:108',
-			['specs']={
-				[1]={
-					['id']='1',
-					['name']='Beast Mastery',
-					['slug']='BeastMastery',
-					['icon']='Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:36:72:72:108'
-				},
-				['BeastMastery']={
-					['id']='1',
-					['name']='Beast Mastery',
-					['slug']='BeastMastery',
-					['icon']='Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:36:72:72:108'
-				},
-				[2]={
-					['id']='2',
-					['name']='Marksmanship',
-					['slug']='Marksmanship',
-					['icon']='Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:72:108:72:108'
-				},
-				['Marksmanship']={
-					['id']='2',
-					['name']='Marksmanship',
-					['slug']='Marksmanship',
-					['icon']='Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:72:108:72:108'
-				},
-				[3]={
-					['id']='3',
-					['name']='Survival',
-					['slug']='Survival',
-					['icon']='Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:108:144:72:108'
-				},
-				['Survival']={
-					['id']='3',
-					['name']='Survival',
-					['slug']='Survival',
-					['icon']='Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:108:144:72:108'
-				}
-			}
-		},
-
-		['Hunter']={
-			['id']='3',
-			['name']='Hunter',
-			['slug']='Hunter',
-			['icon']='Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:0:36:72:108',
-			['specs']={
-				[1]={
-					['id']='1',
-					['name']='Beast Mastery',
-					['slug']='BeastMastery',
-					['icon']='Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:36:72:72:108'
-				},
-				['BeastMastery']={['id']='1',
-					['name']='Beast Mastery',
-					['slug']='BeastMastery',
-					['icon']='Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:36:72:72:108'
-				},
-				[2]={
-					['id']='2',
-					['name']='Marksmanship',
-					['slug']='Marksmanship',
-					['icon']='Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:72:108:72:108'
-				},
-				['Marksmanship']={
-					['id']='2',
-					['name']='Marksmanship',
-					['slug']='Marksmanship',
-					['icon']='Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:72:108:72:108'
-				},
-				[3]={
-					['id']='3',
-					['name']='Survival',
-					['slug']='Survival',
-					['icon']='Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:108:144:72:108'
-				},
-				['Survival']={['id']='3',
-					['name']='Survival',
-					['slug']='Survival',
-					['icon']='Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:108:144:72:108'
-				}
-			}
-		},
-
-		[4]={
-			['id']='4',
-			['name']='Mage',
-			['slug']='Mage',
-			['icon']='Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:0:36:108:144',
-			['specs']={
-				[1]={
-					['id']='1',
-					['name']='Arcane',
-					['slug']='Arcane',
-					['icon']='Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:36:72:108:144'
-				},
-				['Arcane']={
-					['id']='1',
-					['name']='Arcane',
-					['slug']='Arcane',
-					['icon']='Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:36:72:108:144'
-				},
-				[2]={
-					['id']='2',
-					['name']='Fire',
-					['slug']='Fire',
-					['icon']='Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:72:108:108:144'
-				},
-				['Fire']={
-					['id']='2',
-					['name']='Fire',
-					['slug']='Fire',
-					['icon']='Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:72:108:108:144'
-				},
-				[3]={
-					['id']='3',
-					['name']='Frost',
-					['slug']='Frost',
-					['icon']='Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:108:144:108:144'
-				},
-				['Frost']={
-					['id']='3',
-					['name']='Frost',
-					['slug']='Frost',
-					['icon']='Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:108:144:108:144'
-				}
-			}
-		},
-
-		['Mage']={
-			['id']='4',
-			['name']='Mage',
-			['slug']='Mage',
-			['icon']='Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:0:36:108:144',
-			['specs']={
-				[1]={
-					['id']='1',
-					['name']='Arcane',
-					['slug']='Arcane',
-					['icon']='Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:36:72:108:144'
-				},
-				['Arcane']={
-					['id']='1',
-					['name']='Arcane',
-					['slug']='Arcane',
-					['icon']='Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:36:72:108:144'
-				},
-				[2]={
-					['id']='2',
-					['name']='Fire',
-					['slug']='Fire',
-					['icon']='Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:72:108:108:144'
-				},
-				['Fire']={
-					['id']='2',
-					['name']='Fire',
-					['slug']='Fire',
-					['icon']='Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:72:108:108:144'
-				},
-				[3]={
-					['id']='3',
-					['name']='Frost',
-					['slug']='Frost',
-					['icon']='Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:108:144:108:144'
-				},
-				['Frost']={
-					['id']='3',
-					['name']='Frost',
-					['slug']='Frost',
-					['icon']='Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:108:144:108:144'
-				}
-			}
-		},
-
-		[6]={
-			['id']='6',
-			['name']='Paladin',
-			['slug']='Paladin',
-			['icon']='Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:0:36:180:216',
-			['specs']={
-				[1]={
-					['id']='1',
-					['name']='Holy',
-					['slug']='Holy',
-					['icon']='Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:36:72:180:216'
-				},
-				['Holy']={
-					['id']='1',
-					['name']='Holy',
-					['slug']='Holy',
-					['icon']='Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:36:72:180:216'
-				},
-				[2]={
-					['id']='2',
-					['name']='Protection',
-					['slug']='Protection',
-					['icon']='Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:72:108:180:216'
-				},
-				['Protection']={
-					['id']='2',
-					['name']='Protection',
-					['slug']='Protection',
-					['icon']='Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:72:108:180:216'
-				},
-				[3]={
-					['id']='3',
-					['name']='Retribution',
-					['slug']='Retribution',
-					['icon']='Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:108:144:180:216'
-				},
-				['Retribution']={
-					['id']='3',
-					['name']='Retribution',
-					['slug']='Retribution',
-					['icon']='Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:108:144:180:216'
-				},
-				[4]={
-					['id']='4',
-					['name']='Justicar',
-					['slug']='Justicar',
-					['icon']='Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:144:180:180:216'
-				},
-				['Justicar']={
-					['id']='4',
-					['name']='Justicar',
-					['slug']='Justicar',
-					['icon']='Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:144:180:180:216'
-				}
-			}
-		},
-
-		['Paladin']={
-			['id']='6',
-			['name']='Paladin',
-			['slug']='Paladin',
-			['icon']='Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:0:36:180:216',
-			['specs']={
-				[1]={
-					['id']='1',
-					['name']='Holy',
-					['slug']='Holy',
-					['icon']='Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:36:72:180:216'
-				},
-				['Holy']={
-					['id']='1',
-					['name']='Holy',
-					['slug']='Holy',
-					['icon']='Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:36:72:180:216'
-				},
-				[2]={
-					['id']='2',
-					['name']='Protection',
-					['slug']='Protection',
-					['icon']='Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:72:108:180:216'
-				},
-				['Protection']={
-					['id']='2',
-					['name']='Protection',
-					['slug']='Protection',
-					['icon']='Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:72:108:180:216'
-				},
-				[3]={
-					['id']='3',
-					['name']='Retribution',
-					['slug']='Retribution',
-					['icon']='Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:108:144:180:216'
-				},
-				['Retribution']={
-					['id']='3',
-					['name']='Retribution',
-					['slug']='Retribution',
-					['icon']='Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:108:144:180:216'
-				},
-				[4]={
-					['id']='4',
-					['name']='Justicar',
-					['slug']='Justicar',
-					['icon']='Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:144:180:180:216'
-				},
-				['Justicar']={
-					['id']='4',
-					['name']='Justicar',
-					['slug']='Justicar',
-					['icon']='Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:144:180:180:216'
-				}
-			}
-		},
-
-		[7]={
-			['id']='7',
-			['name']='Priest',
-			['slug']='Priest',
-			['icon']='Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:0:36:216:252',
-			['specs']={
-				[1]={
-					['id']='1',
-					['name']='Discipline',
-					['slug']='Discipline',
-					['icon']='Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:36:72:216:252'
-				},
-				['Discipline']=
-				{
-					['id']='1',
-					['name']='Discipline',
-					['slug']='Discipline',
-					['icon']='Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:36:72:216:252'
-				},
-				[2]={
-					['id']='2',
-					['name']='Holy',
-					['slug']='Holy',
-					['icon']='Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:72:108:216:252'
-				},
-				['Holy']={
-					['id']='2',
-					['name']='Holy',
-					['slug']='Holy',
-					['icon']='Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:72:108:216:252'
-				},
-				[3]={
-					['id']='3',
-					['name']='Shadow',
-					['slug']='Shadow',
-					['icon']='Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:108:144:216:252'
-				},
-				['Shadow']={
-					['id']='3',
-					['name']='Shadow',
-					['slug']='Shadow',
-					['icon']='Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:108:144:216:252'
-				}
-			}
-		},
-
-		['Priest']={
-			['id']='7',
-			['name']='Priest',
-			['slug']='Priest',
-			['icon']='Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:0:36:216:252',
-			['specs']={
-				[1]={
-					['id']='1',
-					['name']='Discipline',
-					['slug']='Discipline',
-					['icon']='Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:36:72:216:252'
-				},
-				['Discipline']=
-				{
-					['id']='1',
-					['name']='Discipline',
-					['slug']='Discipline',
-					['icon']='Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:36:72:216:252'
-				},
-				[2]={
-					['id']='2',
-					['name']='Holy',
-					['slug']='Holy',
-					['icon']='Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:72:108:216:252'
-				},
-				['Holy']={
-					['id']='2',
-					['name']='Holy',
-					['slug']='Holy',
-					['icon']='Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:72:108:216:252'
-				},
-				[3]={
-					['id']='3',
-					['name']='Shadow',
-					['slug']='Shadow',
-					['icon']='Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:108:144:216:252'
-				},
-				['Shadow']={
-					['id']='3',
-					['name']='Shadow',
-					['slug']='Shadow',
-					['icon']='Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:108:144:216:252'
-				}
-			}
-		},
-
-		[8]={
-			['id']='8',
-			['name']='Rogue',
-			['slug']='Rogue',
-			['icon']='Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:0:36:252:288',
-			['specs']={
-				[1]={
-					['id']='1',
-					['name']='Assassination',
-					['slug']='Assassination',
-					['icon']='Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:36:72:252:288'
-				},
-				['Assassination']={
-					['id']='1',
-					['name']='Assassination',
-					['slug']='Assassination',
-					['icon']='Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:36:72:252:288'
-				},
-				[2]={
-					['id']='2',
-					['name']='Combat',
-					['slug']='Combat',
-					['icon']='Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:72:108:252:288'
-				},
-				['Combat']={
-					['id']='2',
-					['name']='Combat',
-					['slug']='Combat',
-					['icon']='Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:72:108:252:288'
-				},
-				[3]={
-					['id']='3',
-					['name']='Subtlety',
-					['slug']='Subtlety',
-					['icon']='Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:108:144:252:288'
-				},
-				['Subtlety']={
-					['id']='3',
-					['name']='Subtlety',
-					['slug']='Subtlety',
-					['icon']='Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:108:144:252:288'
-				}
-			}
-		},
-
-		['Rogue']={
-			['id']='8',
-			['name']='Rogue',
-			['slug']='Rogue',
-			['icon']='Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:0:36:252:288',
-			['specs']={
-				[1]={
-					['id']='1',
-					['name']='Assassination',
-					['slug']='Assassination',
-					['icon']='Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:36:72:252:288'
-				},
-				['Assassination']={
-					['id']='1',
-					['name']='Assassination',
-					['slug']='Assassination',
-					['icon']='Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:36:72:252:288'
-				},
-				[2]={
-					['id']='2',
-					['name']='Combat',
-					['slug']='Combat',
-					['icon']='Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:72:108:252:288'
-				},
-				['Combat']={
-					['id']='2',
-					['name']='Combat',
-					['slug']='Combat',
-					['icon']='Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:72:108:252:288'
-				},
-				[3]={
-					['id']='3',
-					['name']='Subtlety',
-					['slug']='Subtlety',
-					['icon']='Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:108:144:252:288'
-				},
-				['Subtlety']={
-					['id']='3',
-					['name']='Subtlety',
-					['slug']='Subtlety',
-					['icon']='Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:108:144:252:288'
-				}
-			}
-		},
-
-		[9]={
-			['id']='9',
-			['name']='Shaman',
-			['slug']='Shaman',
-			['icon']='Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:0:36:288:324',
-			['specs']={
-				[1]={
-					['id']='1',
-					['name']='Elemental',
-					['slug']='Elemental',
-					['icon']='Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:36:72:288:324'
-				},
-				['Elemental']={
-					['id']='1',
-					['name']='Elemental',
-					['slug']='Elemental',
-					['icon']='Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:36:72:288:324'
-				},
-				[2]={
-					['id']='2',
-					['name']='Enhancement',
-					['slug']='Enhancement',
-					['icon']='Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:72:108:288:324'
-				},
-					['Enhancement']={
-					['id']='2',
-					['name']='Enhancement',
-					['slug']='Enhancement',
-					['icon']='Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:72:108:288:324'
-				},
-				[3]={
-					['id']='3',
-					['name']='Restoration',
-					['slug']='Restoration',
-					['icon']='Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:108:144:288:324'
-				},
-				['Restoration']={
-					['id']='3',
-					['name']='Restoration',
-					['slug']='Restoration',
-					['icon']='Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:108:144:288:324'
-				}
-			}
-		},
-
-		['Shaman']={
-			['id']='9',
-			['name']='Shaman',
-			['slug']='Shaman',
-			['icon']='Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:0:36:288:324',
-			['specs']={
-				[1]={
-					['id']='1',
-					['name']='Elemental',
-					['slug']='Elemental',
-					['icon']='Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:36:72:288:324'
-				},
-				['Elemental']={
-					['id']='1',
-					['name']='Elemental',
-					['slug']='Elemental',
-					['icon']='Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:36:72:288:324'
-				},
-				[2]={
-					['id']='2',
-					['name']='Enhancement',
-					['slug']='Enhancement',
-					['icon']='Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:72:108:288:324'
-				},
-					['Enhancement']={
-					['id']='2',
-					['name']='Enhancement',
-					['slug']='Enhancement',
-					['icon']='Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:72:108:288:324'
-				},
-				[3]={
-					['id']='3',
-					['name']='Restoration',
-					['slug']='Restoration',
-					['icon']='Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:108:144:288:324'
-				},
-				['Restoration']={
-					['id']='3',
-					['name']='Restoration',
-					['slug']='Restoration',
-					['icon']='Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:108:144:288:324'
-				}
-			}
-		},
-
-		[10]={
-			['id']='10',
-			['name']='Warlock',
-			['slug']='Warlock',
-			['icon']='Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:0:36:324:360',
-			['specs']={
-				[1]={
-					['id']='1',
-					['name']='Affliction',
-					['slug']='Affliction',
-					['icon']='Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:36:72:324:360'
-				},
-				['Affliction']={
-					['id']='1',
-					['name']='Affliction',
-					['slug']='Affliction',
-					['icon']='Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:36:72:324:360'
-				},
-				[2]={
-					['id']='2',
-					['name']='Demonology',
-					['slug']='Demonology',
-					['icon']='Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:72:108:324:360'
-				},
-				['Demonology']={
-					['id']='2',
-					['name']='Demonology',
-					['slug']='Demonology',
-					['icon']='Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:72:108:324:360'
-				},
-				[3]={
-					['id']='3',
-					['name']='Destruction',
-					['slug']='Destruction',
-					['icon']='Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:108:144:324:360'
-				},
-				['Destruction']={
-					['id']='3',
-					['name']='Destruction',
-					['slug']='Destruction',
-					['icon']='Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:108:144:324:360'
-				}
-			}
-		},
-
-		['Warlock']={
-			['id']='10',
-			['name']='Warlock',
-			['slug']='Warlock',
-			['icon']='Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:0:36:324:360',
-			['specs']={
-				[1]={
-					['id']='1',
-					['name']='Affliction',
-					['slug']='Affliction',
-					['icon']='Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:36:72:324:360'
-				},
-				['Affliction']={
-					['id']='1',
-					['name']='Affliction',
-					['slug']='Affliction',
-					['icon']='Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:36:72:324:360'
-				},
-				[2]={
-					['id']='2',
-					['name']='Demonology',
-					['slug']='Demonology',
-					['icon']='Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:72:108:324:360'
-				},
-				['Demonology']={
-					['id']='2',
-					['name']='Demonology',
-					['slug']='Demonology',
-					['icon']='Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:72:108:324:360'
-				},
-				[3]={
-					['id']='3',
-					['name']='Destruction',
-					['slug']='Destruction',
-					['icon']='Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:108:144:324:360'
-				},
-				['Destruction']={
-					['id']='3',
-					['name']='Destruction',
-					['slug']='Destruction',
-					['icon']='Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:108:144:324:360'
-				}
-			}
-		},
-
-		[11]={
-			['id']='11',
-			['name']='Warrior',
-			['slug']='Warrior',
-			['icon']='Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:0:36:360:396',
-			['specs']={
-				[1]={
-					['id']='1',
-					['name']='Arms',
-					['slug']='Arms',
-					['icon']='Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:36:72:360:396'
-				},
-				['Arms']={
-					['id']='1',
-					['name']='Arms',
-					['slug']='Arms',
-					['icon']='Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:36:72:360:396'
-				},
-				[2]={
-					['id']='2',
-					['name']='Fury',
-					['slug']='Fury',
-					['icon']='Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:72:108:360:396'
-				},
-				['Fury']={
-					['id']='2',
-					['name']='Fury',
-					['slug']='Fury',
-					['icon']='Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:72:108:360:396'
-				},
-				[3]={
-					['id']='3',
-					['name']='Protection',
-					['slug']='Protection',
-					['icon']='Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:108:144:360:396'
-				},
-				['Protection']={
-					['id']='3',
-					['name']='Protection',
-					['slug']='Protection',
-					['icon']='Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:108:144:360:396'
-				},
-				[4]={
-					['id']='4',
-					['name']='Gladiator',
-					['slug']='Gladiator',
-					['icon']='Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:144:180:360:396'
-				},
-				['Gladiator']={
-					['id']='4',
-					['name']='Gladiator',
-					['slug']='Gladiator',
-					['icon']='Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:144:180:360:396'
-				},
-				[5]={
-					['id']='5',
-					['name']='Champion',
-					['slug']='Champion',
-					['icon']='Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:180:216:360:396'
-				},
-				['Champion']={
-					['id']='5',
-					['name']='Champion',
-					['slug']='Champion',
-					['icon']='Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:180:216:360:396'
-				}
-			}
-		},
-
-		['Warrior']={
-			['id']='11',
-			['name']='Warrior',
-			['slug']='Warrior',
-			['icon']='Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:0:36:360:396',
-			['specs']={
-				[1]={
-					['id']='1',
-					['name']='Arms',
-					['slug']='Arms',
-					['icon']='Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:36:72:360:396'
-				},
-				['Arms']={
-					['id']='1',
-					['name']='Arms',
-					['slug']='Arms',
-					['icon']='Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:36:72:360:396'
-				},
-				[2]={
-					['id']='2',
-					['name']='Fury',
-					['slug']='Fury',
-					['icon']='Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:72:108:360:396'
-				},
-				['Fury']={
-					['id']='2',
-					['name']='Fury',
-					['slug']='Fury',
-					['icon']='Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:72:108:360:396'
-				},
-				[3]={
-					['id']='3',
-					['name']='Protection',
-					['slug']='Protection',
-					['icon']='Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:108:144:360:396'
-				},
-				['Protection']={
-					['id']='3',
-					['name']='Protection',
-					['slug']='Protection',
-					['icon']='Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:108:144:360:396'
-				},
-				[4]={
-					['id']='4',
-					['name']='Gladiator',
-					['slug']='Gladiator',
-					['icon']='Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:144:180:360:396'
-				},
-				['Gladiator']={
-					['id']='4',
-					['name']='Gladiator',
-					['slug']='Gladiator',
-					['icon']='Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:144:180:360:396'
-				},
-				[5]={
-					['id']='5',
-					['name']='Champion',
-					['slug']='Champion',
-					['icon']='Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:180:216:360:396'
-				},
-				['Champion']={
-					['id']='5',
-					['name']='Champion',
-					['slug']='Champion',
-					['icon']='Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:180:216:360:396'
-				}
+WCLRanks_BaseData['classes'] = {
+	[1] = {
+		['id'] = '1',
+		['name'] = 'Death Knight',
+		['slug'] = 'DeathKnight',
+		['icon'] = 'Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:0:36:144:180',
+		['specs'] = {
+			[1] = {
+				['id'] = '1',
+				['name'] = 'Blood',
+				['slug'] = 'Blood',
+				['icon'] = 'Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:36:72:144:180'
+			},
+			[2] = {
+				['id'] = '2',
+				['name'] = 'Frost',
+				['slug'] = 'Frost',
+				['icon'] = 'Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:72:108:144:180'
+			},
+			[3] = {
+				['id'] = '3',
+				['name'] = 'Unholy',
+				['slug'] = 'Unholy',
+				['icon'] = 'Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:108:144:144:180'
+			},
+			[4] = {
+				['id'] = '4',
+				['name'] = 'Lichborne',
+				['slug'] = 'Lichborne',
+				['icon'] = 'Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:72:108:144:180'
+			},
+			[5] = {
+				['id'] = '5',
+				['name'] = 'Runeblade',
+				['slug'] = 'Runeblade',
+				['icon'] = 'Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:36:72:144:180'
 			}
 		}
 	},
-
-	['zoneNames']={
-		[1014]={
-			['id']='1014',
-			['name']='Heroic Dungeons',
-			['encounters']='16'
-		},
-		[1015]={
-			['id']='1015',
-			['name']='Naxx/Sarth/Maly',
-			['encounters']='17'
-		},
-		[1016]={
-			['id']='1016',
-			['name']='亞夏梵穹殿',
-			['encounters']='1'
-		},
-		[1017]={
-			['id']='1017',
-			['name']='奧杜亞',
-			['encounters']='14'
+	[2] = {
+		['id'] = '2',
+		['name'] = 'Druid',
+		['slug'] = 'Druid',
+		['icon'] = 'Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:0:36:36:72',
+		['specs'] = {
+			[1] = {
+				['id'] = '1',
+				['name'] = 'Balance',
+				['slug'] = 'Balance',
+				['icon'] = 'Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:36:72:36:72'
+			},
+			[2] = {
+				['id'] = '2',
+				['name'] = 'Feral',
+				['slug'] = 'Feral',
+				['icon'] = 'Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:72:108:36:72'
+			},
+			[3] = {
+				['id'] = '3',
+				['name'] = 'Guardian',
+				['slug'] = 'Guardian',
+				['icon'] = 'Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:108:144:36:72'
+			},
+			[4] = {
+				['id'] = '4',
+				['name'] = 'Restoration',
+				['slug'] = 'Restoration',
+				['icon'] = 'Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:144:180:36:72'
+			},
+			[5] = {
+				['id'] = '5',
+				['name'] = 'Warden',
+				['slug'] = 'Warden',
+				['icon'] = 'Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:180:216:36:72'
+			}
 		}
 	},
-	['zoneEncounters']={
-		[1014]={
-			{
-				['id']=100017,
-				['name']='Utgarde Keep',
-				['journalID']=0
+	[3] = {
+		['id'] = '3',
+		['name'] = 'Hunter',
+		['slug'] = 'Hunter',
+		['icon'] = 'Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:0:36:72:108',
+		['specs'] = {
+			[1] = {['id'] = '1',
+				['name'] = 'Beast Mastery',
+				['slug'] = 'BeastMastery',
+				['icon'] = 'Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:36:72:72:108'
 			},
-			{
-				['id']=100018,
-				['name']='Utgarde Pinnacle',
-				['journalID']=0
+			[2] = {
+				['id'] = '2',
+				['name'] = 'Marksmanship',
+				['slug'] = 'Marksmanship',
+				['icon'] = 'Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:72:108:72:108'
 			},
-			{
-				['id']=100019,
-				['name']='The Nexus',
-				['journalID']=0
-			},
-			{
-				['id']=100020,
-				['name']='The Oculus',
-				['journalID']=0
-			},
-			{	
-				['id']=100021,
-				['name']='The Culling of Stratholme',
-				['journalID']=0
-			},
-			{	
-				['id']=100022,
-				['name']='Halls of Stone',
-				['journalID']=0
-			},
-			{	
-				['id']=100023,
-				['name']='Drak\'Tharon Keep',
-				['journalID']=0
-			},
-			{	
-				['id']=100024,
-				['name']='Azjol-Nerub',
-				['journalID']=0
-			},
-			{	
-				['id']=100025,
-				['name']='Halls of Lightning',
-				['journalID']=0
-			},
-			{	
-				['id']=100026,
-				['name']='Gundrak',
-				['journalID']=0
-			},
-			{
-				['id']=100027,
-				['name']='Violet Hold',
-				['journalID']=0
-			},
-			{	
-				['id']=100028,
-				['name']='Ahn\'kahet: The Old Kingdom',
-				['journalID']=0
-			},
-			{
-				['id']=100029,
-				['name']='Forge of Souls',
-				['journalID']=0
-			},
-			{
-				['id']=100030,
-				['name']='Trial of the Champion',
-				['journalID']=0
-			},
-			{
-				['id']=100031,
-				['name']='Pit of Saron',
-				['journalID']=0
-			},
-			{
-				['id']=100032,
-				['name']='Halls of Reflection',
-				['journalID']=0
+			[3] = {['id'] = '3',
+				['name'] = 'Survival',
+				['slug'] = 'Survival',
+				['icon'] = 'Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:108:144:72:108'
 			}
-		},
-
-		[1015]={
-			{
-				['id']=734,
-				['name']='瑪里苟斯',
-				['journalID']=0
+		}
+	},
+	[4] = {
+		['id'] = '4',
+		['name'] = 'Mage',
+		['slug'] = 'Mage',
+		['icon'] = 'Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:0:36:108:144',
+		['specs'] = {
+			[1] = {
+				['id'] = '1',
+				['name'] = 'Arcane',
+				['slug'] = 'Arcane',
+				['icon'] = 'Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:36:72:108:144'
 			},
-			{
-				['id']=742,
-				['name']='撒爾薩里安',
-				['journalID']=0
+			[2] = {
+				['id'] = '2',
+				['name'] = 'Fire',
+				['slug'] = 'Fire',
+				['icon'] = 'Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:72:108:108:144'
 			},
-			{
-				['id']=101107,
-				['name']='阿努比瑞克漢',--'Anub\'Rekhan',
-				['journalID']=0
-			},
-			{
-				['id']=101108,
-				['name']='古魯斯',--'Gluth',
-				['journalID']=0
-			},
-			{
-				['id']=101109,
-				['name']='收割者高希',--'Gothik the Harvester',
-				['journalID']=0
-			},
-			{
-				['id']=101110,
-				['name']='大寡婦費琳娜',--'Grand Widow Faerlina',
-				['journalID']=0
-			},
-			{
-				['id']=101111,
-				['name']='葛羅巴斯',--'Grobbulus',
-				['journalID']=0
-			},
-			{
-				['id']=101112,
-				['name']='骯髒者海根',--'Heigan the Unclean',
-				['journalID']=0
-			},
-			{
-				['id']=101113,
-				['name']='講師拉祖維斯',--'Instructor Razuvious',
-				['journalID']=0
-			},
-			{
-				['id']=101114,
-				['name']='科爾蘇加德',--'Kel\'Thuzad',
-				['journalID']=0
-			},
-			{
-				['id']=101115,
-				['name']='洛斯伯',--'Loatheb',
-				['journalID']=0
-			},
-			{
-				['id']=101116,
-				['name']='梅克絲娜',--'Maexxna',
-				['journalID']=0
-			},
-			{
-				['id']=101117,
-				['name']='瘟疫者諾斯',--'Noth the Plaguebringer',
-				['journalID']=0
-			},
-			{
-				['id']=101118,
-				['name']='縫補者',--'Patchwerk',
-				['journalID']=0
-			},
-			{
-				['id']=101119,
-				['name']='薩菲隆',--'Sapphiron',
-				['journalID']=0
-			},
-			{
-				['id']=101120,
-				['name']='泰迪斯',--'Thaddius',
-				['journalID']=0
-			},
-			{
-				['id']=101121,
-				['name']='四騎士',--'The Four Horsemen',
-				['journalID']=0
-			},
-		},
-
-		[1016]={
-			{
-				['id']=772,
-				['name']='『石之看守者』亞夏梵',
-				['journalID']=0
-			},
-			{
-				['id']=774,
-				['name']='『風暴看守者』艾瑪隆',
-				['journalID']=0
+			[3] = {
+				['id'] = '3',
+				['name'] = 'Frost',
+				['slug'] = 'Frost',
+				['icon'] = 'Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:108:144:108:144'
 			}
+		}
+	},
+	[6] = {
+		['id'] = '6',
+		['name'] = 'Paladin',
+		['slug'] = 'Paladin',
+		['icon'] = 'Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:0:36:180:216',
+		['specs'] = {
+			[1] = {
+				['id'] = '1',
+				['name'] = 'Holy',
+				['slug'] = 'Holy',
+				['icon'] = 'Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:36:72:180:216'
+			},
+			[2] = {
+				['id'] = '2',
+				['name'] = 'Protection',
+				['slug'] = 'Protection',
+				['icon'] = 'Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:72:108:180:216'
+			},
+			[3] = {
+				['id'] = '3',
+				['name'] = 'Retribution',
+				['slug'] = 'Retribution',
+				['icon'] = 'Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:108:144:180:216'
+			},
+			[4] = {
+				['id'] = '4',
+				['name'] = 'Justicar',
+				['slug'] = 'Justicar',
+				['icon'] = 'Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:144:180:180:216'
+			}
+		}
+	},
+	[7] = {
+		['id'] = '7',
+		['name'] = 'Priest',
+		['slug'] = 'Priest',
+		['icon'] = 'Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:0:36:216:252',
+		['specs'] = {
+			[1] = {
+				['id'] = '1',
+				['name'] = 'Discipline',
+				['slug'] = 'Discipline',
+				['icon'] = 'Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:36:72:216:252'
+			},
+			[2] = {
+				['id'] = '2',
+				['name'] = 'Holy',
+				['slug'] = 'Holy',
+				['icon'] = 'Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:72:108:216:252'
+			},
+			[3] = {
+				['id'] = '3',
+				['name'] = 'Shadow',
+				['slug'] = 'Shadow',
+				['icon'] = 'Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:108:144:216:252'
+			}
+		}
+	},
+	[8] = {
+		['id'] = '8',
+		['name'] = 'Rogue',
+		['slug'] = 'Rogue',
+		['icon'] = 'Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:0:36:252:288',
+		['specs'] = {
+			[1] = {
+				['id'] = '1',
+				['name'] = 'Assassination',
+				['slug'] = 'Assassination',
+				['icon'] = 'Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:36:72:252:288'
+			},
+			[2] = {
+				['id'] = '2',
+				['name'] = 'Combat',
+				['slug'] = 'Combat',
+				['icon'] = 'Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:72:108:252:288'
+			},
+			[3] = {
+				['id'] = '3',
+				['name'] = 'Subtlety',
+				['slug'] = 'Subtlety',
+				['icon'] = 'Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:108:144:252:288'
+			}
+		}
+	},
+	[9] = {
+		['id'] = '9',
+		['name'] = 'Shaman',
+		['slug'] = 'Shaman',
+		['icon'] = 'Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:0:36:288:324',
+		['specs'] = {
+			[1] = {
+				['id'] = '1',
+				['name'] = 'Elemental',
+				['slug'] = 'Elemental',
+				['icon'] = 'Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:36:72:288:324'
+			},
+			[2] = {
+				['id'] = '2',
+				['name'] = 'Enhancement',
+				['slug'] = 'Enhancement',
+				['icon'] = 'Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:72:108:288:324'
+			},
+			[3] = {
+				['id'] = '3',
+				['name'] = 'Restoration',
+				['slug'] = 'Restoration',
+				['icon'] = 'Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:108:144:288:324'
+			}
+		}
+	},
+	[10] = {
+		['id'] = '10',
+		['name'] = 'Warlock',
+		['slug'] = 'Warlock',
+		['icon'] = 'Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:0:36:324:360',
+		['specs'] = {
+			[1] = {
+				['id'] = '1',
+				['name'] = 'Affliction',
+				['slug'] = 'Affliction',
+				['icon'] = 'Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:36:72:324:360'
+			},
+			[2] = {
+				['id'] = '2',
+				['name'] = 'Demonology',
+				['slug'] = 'Demonology',
+				['icon'] = 'Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:72:108:324:360'
+			},
+			[3] = {
+				['id'] = '3',
+				['name'] = 'Destruction',
+				['slug'] = 'Destruction',
+				['icon'] = 'Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:108:144:324:360'
+			}
+		}
+	},
+	[11] = {
+		['id'] = '11',
+		['name'] = 'Warrior',
+		['slug'] = 'Warrior',
+		['icon'] = 'Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:0:36:360:396',
+		['specs'] = {
+			[1] = {
+				['id'] = '1',
+				['name'] = 'Arms',
+				['slug'] = 'Arms',
+				['icon'] = 'Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:36:72:360:396'
+			},
+			[2] = {
+				['id'] = '2',
+				['name'] = 'Fury',
+				['slug'] = 'Fury',
+				['icon'] = 'Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:72:108:360:396'
+			},
+			[3] = {
+				['id'] = '3',
+				['name'] = 'Protection',
+				['slug'] = 'Protection',
+				['icon'] = 'Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:108:144:360:396'
+			},
+			[4] = {
+				['id'] = '4',
+				['name'] = 'Gladiator',
+				['slug'] = 'Gladiator',
+				['icon'] = 'Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:144:180:360:396'
+			},
+			[5] = {
+				['id'] = '5',
+				['name'] = 'Champion',
+				['slug'] = 'Champion',
+				['icon'] = 'Interface/AddOns/WCLRanks/Icons/classes:%w:%h:0:0:256:512:180:216:360:396'
+			}
+		}
+	}
+};
+
+WCLRanks_BaseData_Tmp = WCLRanks_BaseData;
+for classes_key,classes_arr in pairs(WCLRanks_BaseData_Tmp['classes']) do 
+	local classes_id = tonumber(classes_arr['id']);
+	local classes_slug = classes_arr['slug'];
+	
+	for specs_key,specs_arr in pairs(classes_arr['specs']) do 
+		local specs_id = tonumber(specs_arr['id']);
+		local specs_slug = specs_arr['slug'];
+		WCLRanks_BaseData['classes'][ classes_id ]['specs'][ specs_slug ] = WCLRanks_BaseData['classes'][ classes_id ]['specs'][ specs_id ];
+	end
+
+	WCLRanks_BaseData['classes'][ classes_slug ] = WCLRanks_BaseData['classes'][ classes_id ];
+end
+
+WCLRanks_BaseData['zoneNames'] = {
+	[1014] = {
+		['id'] = '1014',
+		['name'] = '英雄副本',
+		['encounters'] = '16'
+	},
+	[1015] = {
+		['id'] = '1015',
+		['name'] = '納克薩瑪斯/黑曜聖所/永恆之眼',
+		['encounters'] = '17'
+	},
+	[1016] = {
+		['id'] = '1016',
+		['name'] = '亞夏梵穹殿',
+		['encounters'] = '1'
+	},
+	[1017] = {
+		['id'] = '1017',
+		['name'] = '奧杜亞',
+		['encounters'] = '14'
+	}
+};
+
+WCLRanks_BaseData['zoneEncounters'] = {
+	[1014] = {
+		{
+			['id'] = 100017,
+			['name'] = '俄特加德要塞',					--'Utgarde Keep'
+			['journalID'] = 0
 		},
-		[1017]={
-			{
-				['id']=744,
-				['name']='烈焰戰輪',--"Flame Leviathan"
-			},
-			{
-				['id']=745,
-				['name']='『火爐之主』伊格尼司',--"Ignis the Furnace Master"
-			},
-			{
-				['id']=746,
-				['name']='銳鱗',--"Razorscale"
-			},
-			{
-				['id']=747,
-				['name']='XT-002拆解者',--"XT-002 Deconstructor"
-			},
-			{
-				['id']=748,
-				['name']='鐵之議會',--"The Assembly of Iron"
-			},
-			{
-				['id']=749,
-				['name']='柯洛剛恩',--"Kologarn"
-			},
-			{
-				['id']=750,
-				['name']='奧芮雅',--"Auriaya"
-			},
-			{
-				['id']=751,
-				['name']='霍迪爾',--"Hodir"
-			},
-			{
-				['id']=752,
-				['name']='索林姆',--"Thorim"
-			},
-			{
-				['id']=753,
-				['name']='芙蕾雅',--"Freya"
-			},
-			{
-				['id']=754,
-				['name']='彌米倫',--"Mimiron"
-			},
-			{
-				['id']=755,
-				['name']='威札斯將軍',--"General Vezax"
-			},
-			{
-				['id']=756,
-				['name']='尤格薩倫',--"Yogg-Saron"
-			},
-			{
-				['id']=757,
-				['name']='『觀察者』艾爾加隆',--"Algalon the Observer"
-			},
+		{
+			['id'] = 100018,
+			['name'] = '俄特加德之巔',					--'Utgarde Pinnacle'
+			['journalID'] = 0
+		},
+		{
+			['id'] = 100019,
+			['name'] = '奧核之心',						--'The Nexus'
+			['journalID'] = 0
+		},
+		{
+			['id'] = 100020,
+			['name'] = '奧核之眼',						--'The Oculus'
+			['journalID'] = 0
+		},
+		{	
+			['id'] = 100021,
+			['name'] = '斯坦索姆的抉擇',					--'The Culling of Stratholme'
+			['journalID'] = 0
+		},
+		{	
+			['id'] = 100022,
+			['name'] = '石之大廳',						--'Halls of Stone'
+			['journalID'] = 0
+		},
+		{	
+			['id'] = 100023,
+			['name'] = '德拉克薩隆要塞',					--'Drak\'Tharon Keep'
+			['journalID'] = 0
+		},
+		{	
+			['id'] = 100024,
+			['name'] = '阿茲歐-奈幽',						--'Azjol-Nerub'
+			['journalID'] = 0
+		},
+		{	
+			['id'] = 100025,
+			['name'] = '雷光大廳',						--'Halls of Lightning'
+			['journalID'] = 0
+		},
+		{	
+			['id'] = 100026,
+			['name'] = '剛德拉克',						--'Gundrak'
+			['journalID'] = 0
+		},
+		{
+			['id'] = 100027,
+			['name'] = '紫羅蘭堡',						--'Violet Hold'
+			['journalID'] = 0
+		},
+		{	
+			['id'] = 100028,
+			['name'] = '安卡罕特：古王國',				--'Ahn\'kahet: The Old Kingdom'
+			['journalID'] = 0
+		},
+		{
+			['id'] = 100029,
+			['name'] = '眾魂熔爐',						--'Forge of Souls'
+			['journalID'] = 0
+		},
+		{
+			['id'] = 100030,
+			['name'] = '勇士試煉',						--'Trial of the Champion'
+			['journalID'] = 0
+		},
+		{
+			['id'] = 100031,
+			['name'] = '薩倫之淵',						--'Pit of Saron'
+			['journalID'] = 0
+		},
+		{
+			['id'] = 100032,
+			['name'] = '倒影大廳',						--'Halls of Reflection'
+			['journalID'] = 0
+		}
+	},
+
+	[1015] = {
+		{
+			['id'] = 734,
+			['name'] = '瑪里苟斯',
+			['journalID'] = 0
+		},
+		{
+			['id'] = 742,
+			['name'] = '撒爾薩里安',
+			['journalID'] = 0
+		},
+		{
+			['id'] = 101107,
+			['name'] = '阿努比瑞克漢', 					--'Anub\'Rekhan',
+			['journalID'] = 0
+		},
+		{
+			['id'] = 101108,
+			['name'] = '古魯斯', 							--'Gluth',
+			['journalID'] = 0
+		},
+		{
+			['id'] = 101109,
+			['name'] = '收割者高希', 						--'Gothik the Harvester',
+			['journalID'] = 0
+		},
+		{
+			['id'] = 101110,
+			['name'] = '大寡婦費琳娜', 					--'Grand Widow Faerlina',
+			['journalID'] = 0
+		},
+		{
+			['id'] = 101111,
+			['name'] = '葛羅巴斯', 						--'Grobbulus',
+			['journalID'] = 0
+		},
+		{
+			['id'] = 101112,
+			['name'] = '骯髒者海根', 						--'Heigan the Unclean',
+			['journalID'] = 0
+		},
+		{
+			['id'] = 101113,
+			['name'] = '講師拉祖維斯',					--'Instructor Razuvious',
+			['journalID'] = 0
+		},
+		{
+			['id'] = 101114,
+			['name'] = '科爾蘇加德', 						--'Kel\'Thuzad',
+			['journalID'] = 0
+		},
+		{
+			['id'] = 101115,
+			['name'] = '洛斯伯', 							--'Loatheb',
+			['journalID'] = 0
+		},
+		{
+			['id'] = 101116,
+			['name'] = '梅克絲娜', 						--'Maexxna',
+			['journalID'] = 0
+		},
+		{
+			['id'] = 101117,
+			['name'] = '瘟疫者諾斯', 						--'Noth the Plaguebringer',
+			['journalID'] = 0
+		},
+		{
+			['id'] = 101118,
+			['name'] = '縫補者', 							--'Patchwerk',
+			['journalID'] = 0
+		},
+		{
+			['id'] = 101119,
+			['name'] = '薩菲隆', 							--'Sapphiron',
+			['journalID'] = 0
+		},
+		{
+			['id'] = 101120,
+			['name'] = '泰迪斯', 							--'Thaddius',
+			['journalID'] = 0
+		},
+		{
+			['id'] = 101121,
+			['name'] = '四騎士', 							--'The Four Horsemen',
+			['journalID'] = 0
+		},
+	},
+
+	[1016] = {
+		{
+			['id'] = 772,
+			['name'] = '『石之看守者』亞夏梵',
+			['journalID'] = 0
+		},
+		{
+			['id'] = 774,
+			['name'] = '『風暴看守者』艾瑪隆',
+			['journalID'] = 0
+		}
+	},
+	[1017] = {
+		{
+			['id'] = 744,
+			['name'] = '烈焰戰輪', 						--"Flame Leviathan"
+		},
+		{
+			['id'] = 745,
+			['name'] = '『火爐之主』伊格尼司', 				--"Ignis the Furnace Master"
+		},
+		{
+			['id'] = 746,
+			['name'] = '銳鱗', 							--"Razorscale"
+		},
+		{
+			['id'] = 747,
+			['name'] = 'XT-002拆解者', 					--"XT-002 Deconstructor"
+		},
+		{
+			['id'] = 748,
+			['name'] = '鐵之議會', 						--"The Assembly of Iron"
+		},
+		{
+			['id'] = 749,
+			['name'] = '柯洛剛恩', 						--"Kologarn"
+		},
+		{
+			['id'] = 750,
+			['name'] = '奧芮雅', 							--"Auriaya"
+		},
+		{
+			['id'] = 751,
+			['name'] = '霍迪爾', 							--"Hodir"
+		},
+		{
+			['id'] = 752,
+			['name'] = '索林姆', 							--"Thorim"
+		},
+		{
+			['id'] = 753,
+			['name'] = '芙蕾雅', 							--"Freya"
+		},
+		{
+			['id'] = 754,
+			['name'] = '彌米倫', 							--"Mimiron"
+		},
+		{
+			['id'] = 755,
+			['name'] = '威札斯將軍', 						--"General Vezax"
+		},
+		{
+			['id'] = 756,
+			['name'] = '尤格薩倫', 						--"Yogg-Saron"
+		},
+		{
+			['id'] = 757,
+			['name'] = '『觀察者』艾爾加隆', 				--"Algalon the Observer"
 		},
 	},
 };
