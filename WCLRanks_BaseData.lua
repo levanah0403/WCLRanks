@@ -1000,48 +1000,77 @@ WCLRanks_BaseData = {
 				['name']='Utgarde Pinnacle',
 				['journalID']=0
 			},
-{['id']=100019,
-['name']='The Nexus',
-['journalID']=0},
-{['id']=100020,
-['name']='The Oculus',
-['journalID']=0},
-{['id']=100021,
-['name']='The Culling of Stratholme',
-['journalID']=0},
-{['id']=100022,
-['name']='Halls of Stone',
-['journalID']=0},
-{['id']=100023,
-['name']='Drak\'Tharon Keep',
-['journalID']=0},
-{['id']=100024,
-['name']='Azjol-Nerub',
-['journalID']=0},
-{['id']=100025,
-['name']='Halls of Lightning',
-['journalID']=0},
-{['id']=100026,
-['name']='Gundrak',
-['journalID']=0},
-{['id']=100027,
-['name']='Violet Hold',
-['journalID']=0},
-{['id']=100028,
-['name']='Ahn\'kahet: The Old Kingdom',
-['journalID']=0},
-{['id']=100029,
-['name']='Forge of Souls',
-['journalID']=0},
-{['id']=100030,
-['name']='Trial of the Champion',
-['journalID']=0},
-{['id']=100031,
-['name']='Pit of Saron',
-['journalID']=0},
-{['id']=100032,
-['name']='Halls of Reflection',
-['journalID']=0}},
+			{
+				['id']=100019,
+				['name']='The Nexus',
+				['journalID']=0
+			},
+			{
+				['id']=100020,
+				['name']='The Oculus',
+				['journalID']=0
+			},
+			{	
+				['id']=100021,
+				['name']='The Culling of Stratholme',
+				['journalID']=0
+			},
+			{	
+				['id']=100022,
+				['name']='Halls of Stone',
+				['journalID']=0
+			},
+			{	
+				['id']=100023,
+				['name']='Drak\'Tharon Keep',
+				['journalID']=0
+			},
+			{	
+				['id']=100024,
+				['name']='Azjol-Nerub',
+				['journalID']=0
+			},
+			{	
+				['id']=100025,
+				['name']='Halls of Lightning',
+				['journalID']=0
+			},
+			{	
+				['id']=100026,
+				['name']='Gundrak',
+				['journalID']=0
+			},
+			{
+				['id']=100027,
+				['name']='Violet Hold',
+				['journalID']=0
+			},
+			{	
+				['id']=100028,
+				['name']='Ahn\'kahet: The Old Kingdom',
+				['journalID']=0
+			},
+			{
+				['id']=100029,
+				['name']='Forge of Souls',
+				['journalID']=0
+			},
+			{
+				['id']=100030,
+				['name']='Trial of the Champion',
+				['journalID']=0
+			},
+			{
+				['id']=100031,
+				['name']='Pit of Saron',
+				['journalID']=0
+			},
+			{
+				['id']=100032,
+				['name']='Halls of Reflection',
+				['journalID']=0
+			}
+		},
 
 		[1015]={
 			{
