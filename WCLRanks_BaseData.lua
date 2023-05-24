@@ -320,12 +320,12 @@ end
 WCLRanks_BaseData['zoneNames'] = {
 	[1014] = {
 		['id'] = '1014',
-		['name'] = '英雄副本',
+		['name'] = '英雄副本',								--'Heroic Dungeons'
 		['encounters'] = '16'
 	},
 	[1015] = {
 		['id'] = '1015',
-		['name'] = '納克薩瑪斯/黑曜聖所/永恆之眼',
+		['name'] = '納克薩瑪斯/黑曜聖所/永恆之眼',				--'Naxx/Sarth/Maly
 		['encounters'] = '17'
 	},
 	[1016] = {
