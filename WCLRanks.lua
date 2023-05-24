@@ -248,13 +248,13 @@ function WCLRanks:OnSlashCommand(cmd)
   if not self.db.slashExtension then
     return;
   end
-  if not cmd or cmd == ""  or cmd == "help" or cmd == "?" then
+  if not cmd or cmd == ""  or cmd == "help" or cmd == "HELP" or cmd == "?" then
     print("|cFFE5CC7F[WCLRanks]|r " .. "Shows player's WCL scores")
     print("|cFFE5CC7F[WCLRanks]|r " .. "|cFFFFFF00/WCLRanks or /wr CHAR_NAME|r to query CHAR_NAME's score")
     print("|cFFE5CC7F[WCLRanks]|r " .. "|cFFFFFF00/WCLRanks or /wr help|?|r to show this help")
     return;
 -- command "t" for target
-  elseif cmd == "t" then
+  elseif cmd == "t" or cmd == "T" then
     if UnitExists("target") then
       if UnitIsPlayer("target") then
         cmd = UnitName("target");
@@ -263,7 +263,7 @@ function WCLRanks:OnSlashCommand(cmd)
       end
     end
 -- command "s" for self
-  elseif cmd == "s" then
+  elseif cmd == "s" or cmd == "S" then
     cmd = UnitName("player");
   end
   --self:LogOutput("OnSlashCommand", arguments);
