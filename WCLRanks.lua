@@ -253,8 +253,41 @@ function WCLRanks:OnSlashCommand(cmd)
     print("|cFFE5CC7F[WCLRanks]|r " .. "|cFFFFFF00/WCLRanks or /wr CHAR_NAME|r to query CHAR_NAME's score")
     print("|cFFE5CC7F[WCLRanks]|r " .. "|cFFFFFF00/WCLRanks or /wr help|?|r to show this help")
     return;
+-- command "t" for target
+  elseif cmd == "t" then
+    if UnitExists("target") then
+      if UnitIsPlayer("target") then
+        cmd = UnitName("target");
+      else
+        return;
+      end
+    end
+-- command "s" for self
+  elseif cmd == "s" then
+    cmd = UnitName("player");
   end
   --self:LogOutput("OnSlashCommand", arguments);
+
+-- create WCL link	
+  local findPlayer, findServer = string.match(cmd, "(.*)-(.*)",0);
+  local url = ""
+  if findPlayer and findPlayer~="" then
+    cmd = findPlayer
+    if findServer and findServer~="" then
+      url = "https://tw.classic.warcraftlogs.com/character/tw/"..findServer.."/"..findPlayer;
+    else
+      url = "https://tw.classic.warcraftlogs.com/search/?term="..findPlayer;
+    end
+  else
+    findPlayer = cmd;
+    findServer = GetRealmName();
+    url = "https://tw.classic.warcraftlogs.com/character/tw/"..findServer.."/"..findPlayer;
+  end
+  if url~="" then
+    url = "|cff".."ffffff".."|Hurl:"..url.."|h["..url.."]|h|r ";
+    self:SendSystemChatLine("WCL: "..url);
+  end	
+	
   local playerData, playerName, playerRealm = self:GetPlayerData(cmd);
   if playerData then
     self:SendSystemChatLine(L["CHAT_PLAYER_DETAILS"].." |Hplayer:"..playerName.."-"..playerRealm.."|h"..playerName.."|h");
