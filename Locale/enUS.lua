@@ -1,5 +1,7 @@
 --localization file for english/United States
-local _, L = ...;
+local L = LibStub("AceLocale-3.0"):NewLocale ("WCLRanks", "enUS", true) 
+if not L then return end 
+
 -- Addon translations
 L["ADDON_TITLE"] = "WCLRanks"
 L["CHAT_PLAYER_DETAILS"] = "Log details for player"
