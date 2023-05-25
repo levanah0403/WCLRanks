@@ -7,6 +7,7 @@
 ## SavedVariables: WCLRanksDB
 
 Libs\LibStub\LibStub.lua
+Libs\AceLocale-3.0\AceLocale-3.0.xml
 Libs\AceTimer-3.0\AceTimer-3.0.xml
 Libs\AceAddon-3.0\AceAddon-3.0.xml
 Data\WCLRanks.xml
