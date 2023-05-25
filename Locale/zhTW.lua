@@ -1,6 +1,6 @@
 --localization file for Taiwan
-local _, L = ...;
-if GetLocale() ~= "zhTW" then return end
+local L = LibStub("AceLocale-3.0"):NewLocale("WCLRanks", "zhTW") 
+if not L then return end 
 
 L["ADDON_TITLE"] = "WCLRanks"
 L["CHAT_PLAYER_DETAILS"] = "角色的 WCL 評分"
