@@ -1,4 +1,4 @@
-local L = LibStub("AceLocale-3.0"):GetLocale ("WCLRanks");
+local L = LibStub("AceLocale-3.0"):GetLocale("WCLRanks");
 
 WCLRanks = CreateFrame("Frame", "WCLRanks", UIParent);
 
