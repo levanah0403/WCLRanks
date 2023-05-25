@@ -283,14 +283,14 @@ function WCLRanks:OnSlashCommand(cmd)
   if findPlayer and findPlayer~="" then
     cmd = findPlayer
     if findServer and findServer~="" then
-      url = "https://tw.classic.warcraftlogs.com/character/tw/"..findServer.."/"..findPlayer;
+      url = L["WCL_URL"] .. "/character/tw/"..findServer.."/"..findPlayer;
     else
-      url = "https://tw.classic.warcraftlogs.com/search/?term="..findPlayer;
+      url = L["WCL_URL"] .. "/search/?term="..findPlayer;
     end
   else
     findPlayer = cmd;
     findServer = GetRealmName();
-    url = "https://tw.classic.warcraftlogs.com/character/tw/"..findServer.."/"..findPlayer;
+    url = L["WCL_URL"] .. "/character/tw/"..findServer.."/"..findPlayer;
   end
   if url~="" then
     url = "|cff".."ffffff".."|Hurl:"..url.."|h["..url.."]|h|r ";
