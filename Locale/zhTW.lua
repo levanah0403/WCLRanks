@@ -1,5 +1,5 @@
 --localization file for Taiwan
-local L = LibStub("AceLocale-3.0"):NewLocale("WCLRanks", "zhTW") 
+local L = LibStub("AceLocale-3.0"):NewLocale("WCLRanks", "zhTW");
 if not L then return end 
 
 L["ADDON_TITLE"] = "WCLRanks"
@@ -21,3 +21,5 @@ L["OPTION_SHOW_1017_25"] = "顯示 奧杜亞 25 人本的資料"
 L["DATE_UPDATE"] = "更新時間"
 L["DATE_FORMAT"] = "%d. %b %Y %H:%M:%S"
 L["TACOTIP_GUILD_NAME_WARNING"] = "[WCLRanks] Warning! You have TacoTip installed with the Guild-Name disabled! This can cause misaligned tooltips. Please consider enabling guild names under ESC > Interface > AddOns > TacoTip > UnitTooltips."
+
+L["WCL_URL"] = "https://tw.classic.warcraftlogs.com"
