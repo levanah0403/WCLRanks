@@ -88,6 +88,10 @@ function WCLRanks:Init()
   self.db.show["1016_25"] = true;
   self.db.show["1017_10"] = true;
   self.db.show["1017_25"] = true;
+  self.db.show["1018_10"] = true;
+  self.db.show["1018_25"] = true;
+  self.db.show["1019_10"] = true;
+  self.db.show["1019_25"] = true;	
   self:LogDebug("Init");
   self:SetScript("OnEvent", self.OnEvent);
   self:RegisterEvent("ADDON_LOADED");
@@ -222,6 +226,42 @@ function WCLRanks:InitOptions()
 		self.db.show["1017_25"] = self.optionShow_1017_25:GetChecked();
 	end)
 	self.optionShow_1017_25:SetChecked(self.db.show["1017_25"]);
+	pos_y = pos_y - 20
+  -- Show Trial of the Crusader 10 player logs
+  self.optionShow_1018_10 = CreateFrame("CheckButton", nil, self.optionsPanel, "InterfaceOptionsCheckButtonTemplate");
+	self.optionShow_1018_10:SetPoint("TOPLEFT", 20, pos_y);
+	self.optionShow_1018_10.Text:SetText(L["OPTION_SHOW_1018_10"]);
+	self.optionShow_1018_10:SetScript("OnClick", function(_, value)
+		self.db.show["1018_10"] = self.optionShow_1018_10:GetChecked();
+	end)
+	self.optionShow_1018_10:SetChecked(self.db.show["1018_10"]);
+	pos_y = pos_y - 20
+  -- Show Trial of the Crusader 25 player logs
+  self.optionShow_1018_25 = CreateFrame("CheckButton", nil, self.optionsPanel, "InterfaceOptionsCheckButtonTemplate");
+	self.optionShow_1018_25:SetPoint("TOPLEFT", 20, pos_y);
+	self.optionShow_1018_25.Text:SetText(L["OPTION_SHOW_1018_25"]);
+	self.optionShow_1018_25:SetScript("OnClick", function(_, value)
+		self.db.show["1018_25"] = self.optionShow_1018_25:GetChecked();
+	end)
+	self.optionShow_1018_25:SetChecked(self.db.show["1018_25"]);
+	pos_y = pos_y - 20
+  -- Show Onyxia 10 player logs
+  self.optionShow_1019_10 = CreateFrame("CheckButton", nil, self.optionsPanel, "InterfaceOptionsCheckButtonTemplate");
+	self.optionShow_1019_10:SetPoint("TOPLEFT", 20, pos_y);
+	self.optionShow_1019_10.Text:SetText(L["OPTION_SHOW_1019_10"]);
+	self.optionShow_1019_10:SetScript("OnClick", function(_, value)
+		self.db.show["1019_10"] = self.optionShow_1019_10:GetChecked();
+	end)
+	self.optionShow_1019_10:SetChecked(self.db.show["1019_10"]);
+	pos_y = pos_y - 20
+  -- Show Onyxia 25 player logs
+  self.optionShow_1019_25 = CreateFrame("CheckButton", nil, self.optionsPanel, "InterfaceOptionsCheckButtonTemplate");
+	self.optionShow_1019_25:SetPoint("TOPLEFT", 20, pos_y);
+	self.optionShow_1019_25.Text:SetText(L["OPTION_SHOW_1019_25"]);
+	self.optionShow_1019_25:SetScript("OnClick", function(_, value)
+		self.db.show["1019_25"] = self.optionShow_1019_25:GetChecked();
+	end)
+	self.optionShow_1019_25:SetChecked(self.db.show["1019_25"]);
 	pos_y = pos_y - 20
 end
 
